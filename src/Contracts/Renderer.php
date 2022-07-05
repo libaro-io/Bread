@@ -87,7 +87,6 @@ abstract class Renderer implements Responsable
         } catch (\Exception $e) {
             dd("{$name} broke: ", $e->getMessage());
         }
-
     }
 
     public function getEntity()
@@ -103,7 +102,7 @@ abstract class Renderer implements Responsable
 
         $first = $this->items->first();
 
-        if($first === null && $this->items instanceof LengthAwarePaginator) {
+        if ($first === null && $this->items instanceof LengthAwarePaginator) {
             $path = explode('/', $this->items->path());
             $this->resource = $path[count($path) - 1];
         }

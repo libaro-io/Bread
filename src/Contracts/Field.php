@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Libaro\Bread\Contracts;
 
-use Illuminate\Support\Collection;
-
 abstract class Field
 {
     public $type = 'text';

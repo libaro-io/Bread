@@ -7,7 +7,6 @@ namespace Libaro\Bread\Renderers;
 use Libaro\Bread\Contracts\Renderer;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Headers\Headers;
-use Libaro\Bread\Routes\Routes;
 
 final class IndexRenderer extends Renderer
 {
