@@ -10,6 +10,8 @@ use Libaro\Bread\Contracts\Header;
 
 final class Headers
 {
+    protected Collection $headers;
+
     public function __construct()
     {
         $this->headers = new Collection();
@@ -41,13 +43,13 @@ final class Headers
     public function toArray()
     {
         $class = new Fluent();
-        $class->data = $this->headers
+        $class->offsetSet('data', $this->headers
             ->map(function (Header $header) {
                 return $header->toArray();
             })
-            ->toArray();
+            ->toArray());
 
-        $class->options = $this->getOptions();
+        $class->offsetSet('options', $this->getOptions());
 
         return $class;
     }

@@ -9,6 +9,8 @@ use Libaro\Bread\Contracts\Component;
 
 final class Components
 {
+    private Collection $components;
+
     public function __construct()
     {
         $this->components = new Collection();

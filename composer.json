@@ -27,7 +27,8 @@
     "phpstan/phpstan-deprecation-rules": "^1.0",
     "phpstan/phpstan-phpunit": "^1.0",
     "pestphp/pest": "^1.10",
-    "pestphp/pest-plugin-laravel": "^1.1"
+    "pestphp/pest-plugin-laravel": "^1.1",
+    "inertiajs/inertia-laravel": "^0.5.4"
   },
   "autoload": {
     "psr-4": {

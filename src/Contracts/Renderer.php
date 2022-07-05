@@ -5,15 +5,21 @@ declare(strict_types=1);
 namespace Libaro\Bread\Contracts;
 
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Libaro\Bread\Routes\Routes;
 
 abstract class Renderer implements Responsable
 {
     protected string $title = '';
     protected string $action = '';
+    protected $entity;
+    protected $items;
     protected $resource;
     protected $classes = [];
     protected ?Collection $components;
+    protected $fields;
+    protected ?Routes $routes = null;
 
     protected string $deleteMessage = 'Weet je zeker dat je dit wilt verwijderen.';
 
@@ -82,7 +88,6 @@ abstract class Renderer implements Responsable
             dd("{$name} broke: ", $e->getMessage());
         }
 
-        throw new \Exception('Method not found.');
     }
 
     public function getEntity()
@@ -97,6 +102,12 @@ abstract class Renderer implements Responsable
         }
 
         $first = $this->items->first();
+
+        if($first === null && $this->items instanceof LengthAwarePaginator) {
+            $path = explode('/', $this->items->path());
+            $this->resource = $path[count($path) - 1];
+        }
+
         if (is_object($first)) {
             $class = class_basename($first);
             $this->resource = strtolower($class);

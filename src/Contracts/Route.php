@@ -8,10 +8,7 @@ abstract class Route
 {
     protected $name;
 
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
+    abstract public function __construct($name);
 
     public static function make($name)
     {

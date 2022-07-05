@@ -46,7 +46,7 @@ final class FormRenderer extends Renderer
 
     public static function render($entity = null): FormRenderer
     {
-        return new static($entity);
+        return new FormRenderer($entity);
     }
 
     public function toResponse($request)
