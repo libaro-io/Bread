@@ -58,6 +58,7 @@ createInertiaApp({
   ...
 })
 ````
+This allows the use of `{domain}::{page}` when calling an Inertia Page (e.g.: `Bread::Index`).
 
 ### Add the '@bread' alias to your webpack config file `version ~1.0.0`
 ```javascript
