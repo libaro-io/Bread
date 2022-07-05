@@ -1,12 +1,10 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Components;
 
-
 use Illuminate\Support\Collection;
-use Illuminate\Support\Fluent;
 use Libaro\Bread\Contracts\Component;
 
 final class Components

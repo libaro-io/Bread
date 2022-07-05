@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Libaro\Bread\Fields;
+
 use Libaro\Bread\Contracts\Field;
 
 final class Text extends Field

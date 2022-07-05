@@ -1,16 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Libaro\Bread\Services;
-
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 final class SortingService
 {
-
     private Request $request;
 
     public function __construct(Request $request)

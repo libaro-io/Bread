@@ -1,9 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Libaro\Bread\Contracts;
-
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;

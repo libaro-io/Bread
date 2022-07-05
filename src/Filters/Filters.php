@@ -4,7 +4,6 @@ namespace Libaro\Bread\Filters;
 
 use Illuminate\Support\Collection;
 use stdClass;
-use Libaro\Bread\Filters\Filter;
 
 class Filters
 {

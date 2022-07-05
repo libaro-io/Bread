@@ -1,11 +1,11 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Fields;
 
-use Libaro\Bread\Contracts\Field;
 use Illuminate\Support\Collection;
+use Libaro\Bread\Contracts\Field;
 
 final class MultiSelect extends Field
 {
