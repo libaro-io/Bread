@@ -12,6 +12,7 @@ final class Tab extends Field
     public $type = 'tab';
 
     public $fields;
+    protected $title;
 
     public function __construct()
     {
@@ -21,12 +22,20 @@ final class Tab extends Field
     public static function make($title, ...$fields)
     {
         $class = new self();
+        $class->setTitle($title);
         $class->title = $title;
         foreach ($fields as $field) {
             $class->fields->push($field);
         }
 
         return $class;
+    }
+
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+
+        return $this;
     }
 
     /**

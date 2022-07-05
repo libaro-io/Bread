@@ -93,7 +93,7 @@ abstract class Filter
 
     /**
      * @param string $operator
-     * @return \Domains\Common\Inertia\Filters\Filter
+     * @return Filter
      */
     public function setOperator(string $operator): self
     {

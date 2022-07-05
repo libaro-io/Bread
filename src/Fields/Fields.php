@@ -9,6 +9,8 @@ use Illuminate\Support\Fluent;
 
 class Fields
 {
+    private Collection $fields;
+
     public function __construct()
     {
         $this->fields = new Collection();
@@ -40,13 +42,13 @@ class Fields
     public function toArray()
     {
         $class = new Fluent();
-        $class->data = $this->fields
+        $class->offsetSet('data', $this->fields
             ->map(function ($field) {
                 return $field->toArray();
             })
-            ->toArray();
+            ->toArray());
 
-        $class->options = $this->getOptions();
+        $class->offsetSet('options', $this->getOptions());
 
         return $class;
     }

@@ -14,7 +14,6 @@ final class IndexRenderer extends Renderer
     protected string $title = '';
     protected ?Headers $headers = null;
     protected ?Filters $filters = null;
-    protected ?Routes $routes = null;
     protected $actions = [];
     protected $items = [];
 
