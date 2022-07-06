@@ -31,17 +31,16 @@ class Types
      */
     public static function getPaths(int $type): array
     {
-        if ($type === self::Field) {
-            return [
+        return match ($type) {
+            self::Field => [
                 'Bread/Fields/Custom',
                 'Bread/Resources/ui/Components/Form/Fields',
-            ];
-        } elseif ($type === self::Header) {
-            return [
+            ],
+            self::Header => [
                 'Bread/Headers/Custom',
                 'Bread/Resources/ui/Components/Table/Fields',
-            ];
-        }
+            ]
+        };
     }
 
     /**
