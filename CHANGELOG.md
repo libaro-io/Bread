@@ -4,6 +4,11 @@
 
 - Initial release
 
+## v1.3.0 - 2022-07-06
+
+- Adds support for custom filters
+- Adds command to create custom Filter
+
 ## v1.2.0 - 2022-07-06
 
 Adds command to create custom Header
