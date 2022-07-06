@@ -4,6 +4,10 @@
 
 - Initial release
 
+## v1.2.0 - 2022-07-06
+
+Adds command to create custom Header
+
 ## v1.1.1 - 2022-07-06
 
 Removes version from composer.json
