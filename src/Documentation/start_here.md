@@ -1,8 +1,8 @@
 # Bread
 
 ## Version
-Current version is 1.1
-Only documentation with `version ~1.1.0` or lower is applicable 
+Current version is 1.2
+Only documentation with `version ~1.2.0` or lower is applicable 
 
 ## What is Bread? `version ~1.0.0`
 
