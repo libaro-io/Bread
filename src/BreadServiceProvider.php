@@ -2,11 +2,11 @@
 
 namespace Libaro\Bread;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\ServiceProvider;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Services\FilterService;
 use Libaro\Bread\Services\SortingService;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\ServiceProvider;
 
 class BreadServiceProvider extends ServiceProvider
 {
@@ -48,5 +48,4 @@ class BreadServiceProvider extends ServiceProvider
             return app(SortingService::class)($this, $defaultColumn, $defaultDirection);
         });
     }
-
 }

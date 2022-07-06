@@ -1,12 +1,10 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Routes;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Fluent;
-use Libaro\Bread\Contracts\Header;
 use Libaro\Bread\Contracts\Route;
 
 final class Routes
@@ -28,7 +26,6 @@ final class Routes
 
         return $class;
     }
-
 
     public function push(Route $header)
     {

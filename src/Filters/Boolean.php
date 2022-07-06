@@ -2,8 +2,6 @@
 
 namespace Libaro\Bread\Filters;
 
-use Libaro\Bread\Filters\Filter;
-
 class Boolean extends Filter
 {
     public function __construct(string $label, string $field)

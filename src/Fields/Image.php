@@ -1,11 +1,10 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Fields;
 
 use Libaro\Bread\Contracts\Field;
-use Illuminate\Support\Collection;
 
 final class Image extends Field
 {

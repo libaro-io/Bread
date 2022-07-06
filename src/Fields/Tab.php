@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Fields;
 
@@ -22,7 +22,7 @@ final class Tab extends Field
     {
         $class = new self();
         $class->title = $title;
-        foreach($fields as $field) {
+        foreach ($fields as $field) {
             $class->fields->push($field);
         }
 

@@ -1,17 +1,13 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Renderers;
 
-
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Database\Eloquent\Model;
-use Libaro\Bread\Contracts\Invokables;
 use Libaro\Bread\Contracts\Renderer;
-use Libaro\Bread\Routes\Routes;
-use Libaro\Bread\Headers\Headers;
 use Libaro\Bread\Filters\Filters;
+use Libaro\Bread\Headers\Headers;
+use Libaro\Bread\Routes\Routes;
 
 final class IndexRenderer extends Renderer
 {

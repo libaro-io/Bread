@@ -3,7 +3,6 @@
 namespace Libaro\Bread\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
-use Libaro\Bread\Filters\Filter;
 
 class Text extends Filter
 {

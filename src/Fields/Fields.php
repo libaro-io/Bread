@@ -1,15 +1,11 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Fields;
 
-
-use Domains\Common\Inertia\Filters\Filter;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
-use Libaro\Bread\Contracts\Header;
-use Libaro\Bread\Contracts\Field;
 
 class Fields
 {

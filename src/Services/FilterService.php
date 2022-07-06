@@ -1,14 +1,13 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace Libaro\Bread\Services;
 
-
-use Libaro\Bread\Filters\Filters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Libaro\Bread\Filters\Filters;
 
 final class FilterService
 {
@@ -40,13 +39,13 @@ final class FilterService
      */
     private function applyFilter($field, $value): void
     {
-        $filter = $this->filters->firstWhere(function($filter) use ($field) {
+        $filter = $this->filters->firstWhere(function ($filter) use ($field) {
             return $filter->getField() === $field;
         });
 
         $filterMethods = $filter->getFilterMethods();
-        if($filterMethods->count() > 0) {
-            foreach($filterMethods as $method => $params) {
+        if ($filterMethods->count() > 0) {
+            foreach ($filterMethods as $method => $params) {
                 $method = 'filter'. ucfirst($method);
                 $model = $this->builder->getModel();
                 $this->builder = $model->{$method}($this->builder, $value, $params);
@@ -54,6 +53,5 @@ final class FilterService
         } else {
             $this->builder = $filter->apply($this->builder, $value);
         }
-
     }
 }

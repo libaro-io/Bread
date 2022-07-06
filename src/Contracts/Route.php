@@ -1,9 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Libaro\Bread\Contracts;
-
 
 abstract class Route
 {
@@ -33,5 +32,4 @@ abstract class Route
     {
         return ['name' => $this->name];
     }
-
 }

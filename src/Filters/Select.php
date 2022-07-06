@@ -3,7 +3,6 @@
 namespace Libaro\Bread\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
-use Libaro\Bread\Filters\Filter;
 
 class Select extends Filter
 {
@@ -28,7 +27,7 @@ class Select extends Filter
 
     public function apply(Builder $builder, $value)
     {
-        if($this->options['multiple']) {
+        if ($this->options['multiple']) {
             return $builder->whereIn($this->field, $value);
         }
 

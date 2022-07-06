@@ -1,9 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Libaro\Bread\Renderers;
-
 
 use Illuminate\Database\Eloquent\Model;
 use Libaro\Bread\Contracts\Renderer;
@@ -22,7 +21,7 @@ final class FormRenderer extends Renderer
     {
         parent::__construct();
         if ($entity === null) {
-            $entity = new class extends Model {
+            $entity = new class () extends Model {
             };
         }
 
@@ -31,7 +30,7 @@ final class FormRenderer extends Renderer
 
     public function setMethod($method)
     {
-        if (!in_array($method, ['POST', 'PUT', 'PATCH'])) {
+        if (! in_array($method, ['POST', 'PUT', 'PATCH'])) {
             throw new \InvalidArgumentException('Invalid method');
         }
 
@@ -72,7 +71,6 @@ final class FormRenderer extends Renderer
         return $this->classes;
     }
 
-
     protected function guessResource()
     {
         if ($this->resource) {
@@ -86,5 +84,4 @@ final class FormRenderer extends Renderer
 
         return $this->resource;
     }
-
 }
