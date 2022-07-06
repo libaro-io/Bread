@@ -8,6 +8,7 @@ use Libaro\Bread\Commands\CreateCustomField;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Services\FilterService;
 use Libaro\Bread\Services\SortingService;
+use Libaro\Bread\Commands\CreateCustomHeader;
 
 class BreadServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class BreadServiceProvider extends ServiceProvider
     {
         $this->commands([
             CreateCustomField::class,
+            CreateCustomHeader::class,
         ]);
     }
 

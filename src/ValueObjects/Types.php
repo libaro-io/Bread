@@ -2,29 +2,61 @@
 
 namespace Libaro\Bread\ValueObjects;
 
+use JetBrains\PhpStorm\Pure;
+
 class Types
 {
     public const Field = 0;
     public const Header = 1;
     public const Filter = 2;
 
-    public static function getPaths(int $type)
+    /**
+     * Returns the label of given type
+     *
+     * @param int $type
+     * @return string
+     */
+    public static function getLabel(int $type): string
+    {
+        return match ($type) {
+            self::Field => 'Field',
+            self::Header => 'Header',
+            self::Filter => 'Filter'
+        };
+    }
+
+    /**
+     * Returns copy destination paths for php and vue files of given type
+     *
+     * @param int $type
+     * @return string[]
+     */
+    public static function getPaths(int $type): array
     {
         if ($type === self::Field) {
             return [
                 'Bread/Fields/Custom',
                 'Bread/Resources/ui/Components/Form/Fields',
             ];
+        } elseif ($type === self::Header) {
+            return [
+                'Bread/Headers/Custom',
+                'Bread/Resources/ui/Components/Table/Fields',
+            ];
         }
     }
 
-    public static function getStubs(int $type)
+    /**
+     * Returns paths for php and vue stubs of given type
+     *
+     * @param int $type
+     * @return string[]
+     */
+    public static function getStubs(int $type): array
     {
-        if ($type === self::Field) {
-            return [
-                __DIR__ . "/../stubs/Field/php.stub",
-                __DIR__ . "/../stubs/Field/vue.stub",
-            ];
-        }
+        return [
+            __DIR__ . "/../stubs/" . self::getLabel($type) . "/php.stub",
+            __DIR__ . "/../stubs/" . self::getLabel($type) . "/vue.stub",
+        ];
     }
 }

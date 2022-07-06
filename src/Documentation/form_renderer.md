@@ -109,6 +109,7 @@ You can create your own custom Field
 
 ### Using the Bread command `version ~1.1.0`
 Run `php artisan bread:field NameOfYourField` to create a new field.
+
 Two files will be created:
 - `Bread/Fields/Custom/NameOfYourField.php`
 - `Bread/Resources/ui/Components/Form/Fields/NameOfYourField.vue`

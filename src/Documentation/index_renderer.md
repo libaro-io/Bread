@@ -113,13 +113,13 @@ You can also create your own header.
 - Create a vue component in `Bread/Resources/ui/Components/Table/Fields`.
 
 #### With Bread command `version ~1.2.0`
-Run `php artisan bread:header --name=NameOfYourHeader` to create a new header. The header will be created
-in `Bread/Headers/NameOfYourHeader/`.
-Two files will be created:
-- `NameOfYourHeader.php`
-- `NameOfYourHeader.vue`
+Run `php artisan bread:header NameOfYourHeader` to create a new header.
 
-All headers in this directory will automatically be available to you.
+Two files will be created:
+- `Bread/Headers/NameOfYourHeader.php`
+- `Bread/Resources/ui/Components/Table/Fields/NameOfYourHeader.vue`
+
+This header will automagically be recognized by Bread.
 
 ### Options `version ~1.0.0`
 You provide options using a fluent api, which means you can chain them in any order.
