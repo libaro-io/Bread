@@ -2,8 +2,6 @@
 
 namespace Libaro\Bread\ValueObjects;
 
-use JetBrains\PhpStorm\Pure;
-
 class Types
 {
     public const Field = 0;

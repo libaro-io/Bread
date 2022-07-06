@@ -5,10 +5,10 @@ namespace Libaro\Bread;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\ServiceProvider;
 use Libaro\Bread\Commands\CreateCustomField;
+use Libaro\Bread\Commands\CreateCustomHeader;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Services\FilterService;
 use Libaro\Bread\Services\SortingService;
-use Libaro\Bread\Commands\CreateCustomHeader;
 
 class BreadServiceProvider extends ServiceProvider
 {
