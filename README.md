@@ -6,8 +6,8 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/libaro/bread.svg?style=flat-square)](https://packagist.org/packages/libaro/bread)
 
 ## Version
-Current version is 1.2
-Only documentation with `version ~1.2.0` or lower is applicable
+Current version is 1.3
+Only documentation with `version ~1.3.0` or lower is applicable
 
 ## What is Bread? `version ~1.0.0`
 

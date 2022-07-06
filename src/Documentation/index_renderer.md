@@ -180,15 +180,15 @@ Filters::add(
 You can also create your own Filter
 
 ### Manually `version ~1.3.0`
-- Create a php class which extends the
-  `Libaro\Bread\Filters\Filter` class.
+- Create a php class which extends the `Libaro\Bread\Filters\Filter` class.
 - Create a vue component in `Bread/Resources/ui/Components/Filter/Types`.
 
 #### With Bread command `version ~1.3.0`
-Run `php artisan bread:filter --name=NameOfYourFilter/` to create a new filter. The filter will be created
-in `Bread/Filters/NameOfYourFilter`.
+Run `php artisan bread:filter NameOfYourFilter` to create a new filter. 
+   
 Two files will be created:
-- `NameOfYourFilter.php`
-- `NameOfYourFilter.vue`
+- `Bread/Filters/Custom/NameOfYourFilter.php`
+- `Bread/Resources/ui/Components/Filter/Types/NameOfYourFilter.vue`
 
-All filters in this directory will automatically be available to you.
+You must add your filter to the fields vue component in `Bread/Resources/ui/Components/Filter/Fields`. 
+So that it can be loaded by vue. This must also be done when creating filters using the bread command.

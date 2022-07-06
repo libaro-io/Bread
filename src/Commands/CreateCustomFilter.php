@@ -6,11 +6,11 @@ use Illuminate\Console\Command;
 use Libaro\Bread\Services\CreateCustomService;
 use Libaro\Bread\ValueObjects\Types;
 
-class CreateCustomHeader extends Command
+class CreateCustomFilter extends Command
 {
-    protected $signature = 'bread:header {name}';
+    protected $signature = 'bread:filter {name}';
 
-    protected $description = 'Create a custom index Header';
+    protected $description = 'Create a custom index Filter';
 
     public function handle(): int
     {
@@ -24,15 +24,15 @@ class CreateCustomHeader extends Command
 
         $name = CreateCustomService::transformName($name);
 
-        [$php, $vue] = CreateCustomService::copyFiles($name, Types::Header);
+        [$php, $vue] = CreateCustomService::copyFiles($name, Types::Filter);
 
         if (! $php) {
-            $this->error("Custom Header: '$name' could not be created");
+            $this->error("Custom Filter: '$name' could not be created");
 
             return 0;
         }
 
-        $this->info("Custom Header: '$name' created in project.");
+        $this->info("Custom Filter: '$name' created in project.");
         $this->info($php . '/' . $name . '.php');
         $this->info($vue . '/' . $name . '.vue');
 

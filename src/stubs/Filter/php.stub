@@ -1,0 +1,28 @@
+<?php
+
+namespace Bread\Filters\Custom;
+
+use Libaro\Bread\Filters\Filter;
+use Illuminate\Database\Eloquent\Builder;
+
+class {{class}} extends Filter
+{
+    protected string $operator = 'like';
+
+    public function __construct(string $label, string $field)
+    {
+        parent::__construct($label, $field);
+
+        $this->setType('{{class_snake}}');
+    }
+
+    public static function make(string $label, string $field)
+    {
+        return new self($label, $field);
+    }
+
+    public function apply(Builder $builder, $value)
+    {
+        return $builder->where($this->getField(), $this->getOperator(), "%$value%");
+    }
+}

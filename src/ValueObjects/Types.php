@@ -39,6 +39,10 @@ class Types
             self::Header => [
                 'Bread/Headers/Custom',
                 'Bread/Resources/ui/Components/Table/Fields',
+            ],
+            self::Filter => [
+                'Bread/Filters/Custom',
+                'Bread/Resources/ui/Components/Filter/Types',
             ]
         };
     }

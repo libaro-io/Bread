@@ -72,7 +72,7 @@ const filter = () => {
                   </div>
                   <div class="relative mt-6 flex-1 space-y-8 px-4 sm:px-6">
                     <div class="flex justify-end">
-                      <Button @click="filter()">Filter</Button>
+                      <Button @click="filter()" label="Filter" />
                     </div>
                     <div class="flex flex-col space-y-8">
                       <Fields />

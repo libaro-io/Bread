@@ -15,13 +15,12 @@ const filter = () => {
   <Transition>
     <div
       v-show="store.show_filters"
-      class="my-8 flex items-center justify-between"
+      class="my-8 flex justify-between items-start bg-gray-100 rounded-md p-4"
     >
-      <div class="flex items-center space-x-6">
+      <div class="flex space-y-4 flex-col">
         <Fields />
       </div>
       <Button
-          class="self-end"
           @click="filter()"
           :label="store.translate('filter', { ucfirst: true })"
       />
