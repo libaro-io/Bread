@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Services\FilterService;
 use Libaro\Bread\Services\SortingService;
+use Libaro\Bread\Commands\CreateCustomField;
 
 class BreadServiceProvider extends ServiceProvider
 {
@@ -35,7 +36,7 @@ class BreadServiceProvider extends ServiceProvider
     private function registerCommands(): void
     {
         $this->commands([
-            // Add commands here
+            CreateCustomField::class,
         ]);
     }
 

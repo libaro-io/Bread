@@ -1,0 +1,20 @@
+<?php
+
+namespace Bread\Fields\Custom;
+
+use Libaro\Bread\Contracts\Field;
+
+class {{class}} extends Field
+{
+    public $type = '{{class}}';
+
+    public function __construct(string $name, string $label)
+    {
+        parent::__construct($name, $label);
+    }
+
+    public static function make(string $name, string $label)
+    {
+        return new self($name, $label);
+    }
+}
