@@ -3,8 +3,8 @@
 namespace Libaro\Bread\Commands;
 
 use Illuminate\Console\Command;
-use Libaro\Bread\ValueObjects\Types;
 use Libaro\Bread\Services\CreateCustomService;
+use Libaro\Bread\ValueObjects\Types;
 
 class CreateCustomField extends Command
 {
@@ -16,8 +16,9 @@ class CreateCustomField extends Command
     {
         $name = $this->argument('name');
 
-        if(!CreateCustomService::isNameValid($name)) {
+        if (! CreateCustomService::isNameValid($name)) {
             $this->error("Name: '$name' is not valid");
+
             return 0;
         }
 
@@ -25,8 +26,9 @@ class CreateCustomField extends Command
 
         [$php, $vue] = CreateCustomService::copyFiles($name, Types::Field);
 
-        if(!$php) {
+        if (! $php) {
             $this->error("Custom Field: '$name' could not be created");
+
             return 0;
         }
 
