@@ -1,67 +1,25 @@
 # Customizing the layout  `version ~1.4.0`
-Bread has been designed from the ground up with customization in mind.
-By default, Bread will look for an optional `bread.config.js` file at the root of your project where you can define any
-customizations.
 
-Bread uses TailwindCSS classes to build its layout. You can override the styling of Bread components and colors by providing it
-your own tailwind classes.
+Bread has been designed from the ground up with customization in mind. You can change the styling of certain elements by
+changing them in `Bread/Resources/js/style_config.js`.
 
-Your `bread.config.js` file will be merged with the default configuration and your customizations will be applied.
+Bread uses TailwindCSS classes to build its layout. You can override the styling of Bread components and colors by
+providing it your own tailwind classes.
 
-## Colors.
-Override the default colors, with those of your project's style guide.
+### style_config.js
 
-### Example
 ```js
-module.exports = {
+export default {
     colors: {
-      'primary-dark': 'blue-500',
-      'secondary-light': 'grey-500',
-    }
-}
-```
-
-### Options
-- `brand`
-- `primary-dark`
-- `secondary-dark`
-- `primary-light`
-- `secondary-light`
-  
-### Components.
-Override the default components, with those of your project's style guide.
-
-## Example
-```js
-module.exports = {
-  components: {
-    'buttons': {
-      create: 'bg-blue-500',
+        success: 'bg-green-600 hover:bg-red-700',
+        danger: 'bg-red-600 hover:bg-red-700',
+        info: 'bg-blue-600 hover:bg-blue-700',
     },
-  },
+    rings: {
+        danger: '@bread(colors.danger) focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'
+    },
+    buttons: {
+        danger: ' @bread(rings.danger) inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm sm:col-start-2 sm:text-sm'
+    },
 }
 ```
-
-## Components.
-- Buttons:
-  - `create`
-  - `edit`
-  - `delete`
-  - `cancel`
-  - `save`
-  - `update`
-  - `reset`
-
-- Forms:
-  - `input`
-  - `select`
-  - `select-option`
-  - `textarea`
-  - `checkbox`
-  - `radio`
-
-- Tables:
-  - `table`
-  - `table-header`
-  - `table-row`
-  - `table-cell`
