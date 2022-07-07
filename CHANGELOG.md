@@ -4,6 +4,10 @@
 
 - Initial release
 
+## v1.3.1 - 2022-07-07
+
+Adds scope support to filter service
+
 ## v1.3.0 - 2022-07-06
 
 - Adds support for custom filters
