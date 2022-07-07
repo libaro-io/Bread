@@ -48,7 +48,7 @@ final class FilterService
             foreach ($filterMethods as $method => $params) {
                 $model = $this->builder->getModel();
                 $methodName = 'filter'. ucfirst($method);
-                if(!method_exists($model, $methodName)) {
+                if (! method_exists($model, $methodName)) {
                     $methodName = 'scope'. ucfirst($method);
                 }
                 $this->builder = $model->{$method}($this->builder, $value, $params);
