@@ -4,6 +4,11 @@
 
 - Initial release
 
+## v1.4.0 - 2022-07-08
+
+- Adds support for customizing the styling of components through a config file
+- Move all documentation to the README file
+
 ## v1.3.1 - 2022-07-07
 
 Adds scope support to filter service
