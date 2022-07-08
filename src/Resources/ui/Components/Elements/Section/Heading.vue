@@ -16,14 +16,12 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="w-full px-4 pt-4 pb-5 sm:flex sm:items-center sm:justify-between">
-    <h3 class="text-lg font-medium leading-6 text-gray-900">
-      {{ label }}
-    </h3>
-    <div class="flex items-center">
+  <div className="w-full px-4 pt-4 pb-5 sm:flex sm:items-center sm:justify-between">
+    <h3 className="text-lg font-medium leading-6 text-gray-900">{{ label }}</h3>
+    <div className="flex items-center">
       <slot name="actions">
-        <div class="mx-2 mt-3 sm:mt-0 sm:ml-4">
-          <Button v-if="link" label="new" :link="route(link)"/>
+        <div className="mx-2 mt-3 sm:mt-0 sm:ml-4">
+          <Button v-if="link" label="new" :link="route(link)" new/>
         </div>
       </slot>
       <slot name="after-actions"></slot>
