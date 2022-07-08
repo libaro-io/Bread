@@ -18,7 +18,6 @@ class BreadServiceProvider extends ServiceProvider
         $this->registerCommands();
         $this->publishes([
             __DIR__.'/Resources' => base_path('Bread/Resources'),
-            __DIR__.'/Documentation' => base_path('Bread/Documentation'),
         ], 'bread');
     }
 
