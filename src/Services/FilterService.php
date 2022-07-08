@@ -51,7 +51,7 @@ final class FilterService
                 if (! method_exists($model, $methodName)) {
                     $methodName = 'scope'. ucfirst($method);
                 }
-                $this->builder = $model->{$method}($this->builder, $value, $params);
+                $this->builder = $model->{$methodName}($this->builder, $value, $params);
             }
         } else {
             $this->builder = $filter->apply($this->builder, $value);
