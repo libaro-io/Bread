@@ -12,6 +12,7 @@ import { ArrowSmUpIcon } from '@heroicons/vue/solid'
 import Trend from './Fields/Trend.vue'
 import Rating from './Fields/Rating.vue'
 import { useBreadStore } from '@bread/js/store'
+import Bread from '@bread/js/Services/Bread'
 
 const { DateTime } = require('luxon')
 
@@ -88,41 +89,41 @@ const getFormattedDate = (value, format) => {
 </script>
 <template>
   <Confirmation
-      v-if="isModalVisible"
-      @onDelete="deleteItem"
-      :message="deleteMessage"
+    v-if="isModalVisible"
+    @onDelete="deleteItem"
+    :message="deleteMessage"
   ></Confirmation>
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
         <div
-            class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg"
+          class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg"
         >
           <table :key="version" class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
             <tr>
               <th
-                  scope="col"
-                  class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                  v-for="header in props.headers.data"
-                  :key="header.name"
+                scope="col"
+                class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                v-for="header in props.headers.data"
+                :key="header.name"
               >
                 <div
-                    class="flex"
-                    @click="header.sortable ? sortBy(header.value) : ''"
-                    :class="{ 'cursor-pointer': header.sortable }"
+                  class="flex"
+                  @click="header.sortable ? sortBy(header.value) : ''"
+                  :class="{ 'cursor-pointer': header.sortable }"
                 >
                     <span
-                        :class="{
+                      :class="{
                         'font-extrabold': currentSort?.column === header.value,
                       }"
                     >
                       {{ header.label }}
                     </span>
                   <ArrowSmUpIcon
-                      v-if="header.sortable"
-                      class="ml-4 h-4 w-4 transform transition-all duration-200 hover:scale-125"
-                      :class="{
+                    v-if="header.sortable"
+                    class="ml-4 h-4 w-4 transform transition-all duration-200 hover:scale-125"
+                    :class="{
                         'rotate-180 transform':
                           currentSort?.column &&
                           currentSort?.direction === 'desc',
@@ -137,16 +138,16 @@ const getFormattedDate = (value, format) => {
             </thead>
             <tbody>
             <tr
-                v-for="(item, i) in props.items"
-                :key="item.id"
-                :class="i % 2 === 0 ? 'bg-white' : 'bg-gray-50'"
+              v-for="(item, i) in props.items"
+              :key="item.id"
+              :class="i % 2 === 0 ? 'bg-white' : 'bg-gray-50'"
             >
               <slot name="row">
                 <td
-                    class="whitespace-nowrap px-6 py-4 text-sm font-medium"
-                    v-for="(header, _i) in props.headers.data"
-                    :key="`${item.id}_${header.name}`"
-                    :class="{ 'text-gray-900': _i === 0 }"
+                  class="whitespace-nowrap px-6 py-4 text-sm font-medium"
+                  v-for="(header, _i) in props.headers.data"
+                  :key="`${item.id}_${header.name}`"
+                  :class="{ 'text-gray-900': _i === 0 }"
                 >
                   <template v-if="header.type === 'property'">
                       <span>
@@ -155,26 +156,26 @@ const getFormattedDate = (value, format) => {
                   </template>
                   <span v-else-if="header.type === 'number'">
                       <Number
-                          :editable="header.editable"
-                          :id="getPropByString(items[i], 'id')"
-                          :number="getPropByString(items[i], header.value)"
-                          :update_route="props.routes.update"
-                          :attribute_name="header.value"
+                        :editable="header.editable"
+                        :id="getPropByString(items[i], 'id')"
+                        :number="getPropByString(items[i], header.value)"
+                        :update_route="props.routes.update"
+                        :attribute_name="header.value"
                       />
                     </span>
                   <span v-else-if="header.type === 'boolean'">
                       <Checkbox
-                          :editable="header.editable"
-                          :id="getPropByString(items[i], 'id')"
-                          :checked="getPropByString(items[i], header.value)"
-                          :update_route="props.routes.update"
-                          :attribute_name="header.value"
+                        :editable="header.editable"
+                        :id="getPropByString(items[i], 'id')"
+                        :checked="getPropByString(items[i], header.value)"
+                        :update_route="props.routes.update"
+                        :attribute_name="header.value"
                       />
                     </span>
                   <span v-else-if="header.type === 'label'">
                       <Label
-                          :value="getPropByString(items[i], header.value)"
-                          :options="header.options"
+                        :value="getPropByString(items[i], header.value)"
+                        :options="header.options"
                       />
                     </span>
                   <span v-else-if="header.type === 'rating'">
@@ -185,14 +186,14 @@ const getFormattedDate = (value, format) => {
                     </span>
                   <span v-else-if="header.type === 'download'">
                       <Download
-                          v-if="getPropByString(items[i], header.value)"
-                          :value="getPropByString(items[i], header.value)"
+                        v-if="getPropByString(items[i], header.value)"
+                        :value="getPropByString(items[i], header.value)"
                       />
                     </span>
                   <span v-else-if="header.type === 'link'">
                       <a
-                          :href="getPropByString(items[i], header.value)"
-                          v-bind:target="header.options._target"
+                        :href="getPropByString(items[i], header.value)"
+                        v-bind:target="header.options._target"
                       >
                         {{ header.label }}
                       </a>
@@ -210,8 +211,8 @@ const getFormattedDate = (value, format) => {
                             {{ entity[field] }}
                           </span>
                           <span
-                              v-if="entityKey < items[i][key].length - 1"
-                              v-html="header.options.separator"
+                            v-if="entityKey < items[i][key].length - 1"
+                            v-html="header.options.separator"
                           >
                           </span>
                         </span>
@@ -219,7 +220,7 @@ const getFormattedDate = (value, format) => {
                     </span>
                   <span v-else-if="header.type === 'date'">
                       <span
-                          v-text="
+                        v-text="
                           getFormattedDate(
                             item[header.value],
                             header.options.format
@@ -229,23 +230,23 @@ const getFormattedDate = (value, format) => {
                     </span>
                 </td>
                 <td
-                    v-if="routes.edit"
-                    class="space-x-2 whitespace-nowrap px-2 py-4 text-right text-sm font-medium"
+                  v-if="routes.edit"
+                  class="space-x-2 whitespace-nowrap px-2 py-4 text-right text-sm font-medium"
                 >
                   <Link
-                      :href="
+                    :href="
                         route(routes.edit.name, [
                           items[i][routes.edit.identifier],
                         ])
                       "
-                      class="text-indigo-600 hover:text-indigo-900"
+                    :class="Bread.style('text.dark')"
                   >
                     {{ store.translate('edit') }}
                   </Link>
                   <span v-if="routes.destroy" class="inline-block">
                       <button
-                          v-on:click="openModal(item)"
-                          class="text-red-600 hover:text-red-900"
+                        v-on:click="openModal(item)"
+                        :class="Bread.style('text.danger')"
                       >
                         {{ store.translate('delete') }}
                       </button>
