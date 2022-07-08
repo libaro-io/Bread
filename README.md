@@ -6,13 +6,16 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/libaro/bread.svg?style=flat-square)](https://packagist.org/packages/libaro/bread)
 
 ## Version
-Current version is 1.0
-Only documentation with `version ~1.0.0` is applicable
+Current version is 1.3
+Only documentation with `version ~1.3.0` or lower is applicable
 
 ## What is Bread? `version ~1.0.0`
 
 Bread stands for Browse, Read, Edit, Add and Delete. It allows the developer to rapidly create CRUD applications, simply
 by describing which fields to use.
+
+This document gives general usage documentation. The full documentation is installed
+when publishing the resource files.
 
 ```bash
 composer require libaro/bread
@@ -58,6 +61,7 @@ createInertiaApp({
   ...
 })
 ````
+This allows the use of `{domain}::{page}` when calling an Inertia Page (e.g.: `Bread::Index`).
 
 ### Add the '@bread' alias to your webpack config file `version ~1.0.0`
 ```javascript
@@ -131,7 +135,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/libaro-io/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 

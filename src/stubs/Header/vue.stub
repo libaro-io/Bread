@@ -1,0 +1,16 @@
+<script setup>
+import { onMounted, ref, watch } from 'vue'
+import { Inertia } from '@inertiajs/inertia'
+
+const props = defineProps({
+  value: {
+    type: Boolean,
+    required: true,
+  },
+})
+
+</script>
+
+<template>
+  {{class}}
+</template>

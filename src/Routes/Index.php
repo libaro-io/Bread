@@ -8,4 +8,8 @@ use Libaro\Bread\Contracts\Route;
 
 final class Index extends Route
 {
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
 }

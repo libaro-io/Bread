@@ -10,7 +10,6 @@ use Libaro\Bread\Contracts\Field;
 final class MultiSelect extends Field
 {
     public $type = 'multiSelect';
-    public Collection $options;
 
     /**
      * @param string $name

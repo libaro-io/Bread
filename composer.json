@@ -1,6 +1,5 @@
 {
   "name": "libaro/bread",
-  "version": "1.0.0",
   "description": "Bread",
   "keywords": [
     "libaro",
@@ -22,7 +21,13 @@
     "php": "^7.4|^8.0"
   },
   "require-dev": {
-    "orchestra/testbench": "^v7.5.0"
+    "orchestra/testbench": "^v7.5.0",
+    "phpstan/extension-installer": "^1.1",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-phpunit": "^1.0",
+    "pestphp/pest": "^1.10",
+    "pestphp/pest-plugin-laravel": "^1.1",
+    "inertiajs/inertia-laravel": "^0.5.4"
   },
   "autoload": {
     "psr-4": {
@@ -34,8 +39,17 @@
       "Libaro\\Bread\\Tests\\": "tests"
     }
   },
+  "scripts": {
+    "analyse": "vendor/bin/phpstan analyse",
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest coverage"
+  },
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "phpstan/extension-installer": true
+    }
   },
   "extra": {
     "laravel": {

@@ -1,0 +1,27 @@
+<script setup>
+import { onMounted, ref } from 'vue'
+import { useBreadStore } from '@bread/js/store'
+
+const emits = defineEmits(['update:modelValue'])
+
+const props = defineProps({
+  field: {
+    type: Object,
+    required: true,
+  },
+  entity: {
+    type: Object,
+    required: true,
+  },
+  modelValue: {},
+})
+
+const breadStore = useBreadStore()
+
+</script>
+
+<template>
+  <div>
+    {{class}}
+  </div>
+</template>

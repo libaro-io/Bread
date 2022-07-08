@@ -10,7 +10,6 @@ use Libaro\Bread\Contracts\Field;
 final class Select extends Field
 {
     public $type = 'select';
-    public Collection $options;
     public $multiple = true;
 
     /**
