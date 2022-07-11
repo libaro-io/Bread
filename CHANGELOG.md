@@ -4,6 +4,10 @@
 
 - Initial release
 
+## v1.5.0 - 2022-07-11
+
+Adds Money field type to the IndexRenderer
+
 ## v1.4.0 - 2022-07-08
 
 - Adds support for customizing the styling of components through a config file
