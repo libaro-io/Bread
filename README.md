@@ -256,6 +256,7 @@ All headers have a range of options that you can use to customize the header.
 - `Link`
 - `Rating`
 - `Set`
+- `Money`
 
 ### Creating custom headers
 You can also create your own header.

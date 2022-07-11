@@ -1,20 +1,21 @@
 <script setup>
-import { getPropByString } from './../../../js/Services/Helpers'
-import { Link } from '@inertiajs/inertia-vue3'
-import { computed, onBeforeUpdate, onMounted, reactive, ref } from 'vue'
+import {getPropByString} from './../../../js/Services/Helpers'
+import {Link} from '@inertiajs/inertia-vue3'
+import {computed, onBeforeUpdate, onMounted, reactive, ref} from 'vue'
 import Confirmation from './../Elements/Modals/Confirmation'
-import { Inertia } from '@inertiajs/inertia'
+import {Inertia} from '@inertiajs/inertia'
 import Number from './Fields/Number.vue'
+import Money from './Fields/Money.vue'
 import Checkbox from './Fields/Checkbox.vue'
 import Label from './Fields/Label.vue'
 import Download from './Fields/Download'
-import { ArrowSmUpIcon } from '@heroicons/vue/solid'
+import {ArrowSmUpIcon} from '@heroicons/vue/solid'
 import Trend from './Fields/Trend.vue'
 import Rating from './Fields/Rating.vue'
-import { useBreadStore } from '@bread/js/store'
+import {useBreadStore} from '@bread/js/store'
 import Bread from '@bread/js/Services/Bread'
 
-const { DateTime } = require('luxon')
+const {DateTime} = require('luxon')
 
 const form = reactive({
   id: null,
@@ -57,7 +58,7 @@ const deleteItem = (boolean) => {
 
   if (boolean === true) {
     form['_method'] = 'delete'
-    Inertia.post(route(props.routes.destroy.name, { id: toDelete.value }), form)
+    Inertia.post(route(props.routes.destroy.name, {id: toDelete.value}), form)
   }
 
   toDelete.value = null
@@ -74,7 +75,7 @@ const sortBy = (column) => {
   if (_params.sort && _params.sort.column === column) {
     _params.sort.direction = _params.sort.direction === 'asc' ? 'desc' : 'asc'
   } else {
-    _params.sort = { column, direction: 'asc' }
+    _params.sort = {column, direction: 'asc'}
   }
   Inertia.get(route(route().current()), _params)
 }
@@ -162,7 +163,17 @@ const getFormattedDate = (value, format) => {
                         :update_route="props.routes.update"
                         :attribute_name="header.value"
                       />
-                    </span>
+                  </span>
+                  <span v-else-if="header.type === 'money'">
+                      <Money
+                        :editable="header.editable"
+                        :id="getPropByString(items[i], 'id')"
+                        :number="getPropByString(items[i], header.value)"
+                        :update_route="props.routes.update"
+                        :attribute_name="header.value"
+                        :options="header.options"
+                      />
+                  </span>
                   <span v-else-if="header.type === 'boolean'">
                       <Checkbox
                         :editable="header.editable"
@@ -179,10 +190,10 @@ const getFormattedDate = (value, format) => {
                       />
                     </span>
                   <span v-else-if="header.type === 'rating'">
-                      <Rating :header="header" :item="items[i]" />
+                      <Rating :header="header" :item="items[i]"/>
                     </span>
                   <span v-else-if="header.type === 'trend'">
-                      <Trend :trend="getPropByString(items[i], header.value)" />
+                      <Trend :trend="getPropByString(items[i], header.value)"/>
                     </span>
                   <span v-else-if="header.type === 'download'">
                       <Download
