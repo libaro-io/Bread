@@ -25,4 +25,12 @@ final class Image extends Field
     {
         return new self($name, $label);
     }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['collection'] = $this->collection;
+
+        return $array;
+    }
 }

@@ -7,7 +7,7 @@ namespace Libaro\Bread\Fields;
 use Illuminate\Support\Collection;
 use Libaro\Bread\Contracts\Field;
 
-final class Tabs
+final class Tabs extends Field
 {
     public $type = 'tabs';
     public $tabs;
@@ -40,8 +40,7 @@ final class Tabs
      */
     public function toArray()
     {
-        $array = (array)$this;
-        $array['component'] = $this->vueComponent ?? ucfirst($this->type);
+        $array = parent::toArray();
         $array['tabs'] = $this->tabs
             ->map(function (Field $tab) {
                 return $tab->toArray();

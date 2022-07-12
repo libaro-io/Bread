@@ -33,4 +33,12 @@ final class Select extends Field
 
         return $this;
     }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['multiple'] = $this->multiple;
+
+        return $array;
+    }
 }

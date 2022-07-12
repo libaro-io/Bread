@@ -43,8 +43,7 @@ final class Tab extends Field
      */
     public function toArray()
     {
-        $array = (array)$this;
-        $array['component'] = $this->vueComponent ?? ucfirst($this->type);
+        $array = parent::toArray();
         $array['fields'] = $this->fields->map(function (Field $field) {
             return $field->toArray();
         })->toArray();

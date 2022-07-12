@@ -21,4 +21,12 @@ final class Boolean extends Field
         parent::__construct($name, $label);
         $this->attributes = $attributes;
     }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['attributes'] = $this->attributes;
+
+        return $array;
+    }
 }
