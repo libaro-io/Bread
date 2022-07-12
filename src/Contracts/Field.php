@@ -55,10 +55,15 @@ abstract class Field
      */
     public function toArray()
     {
-        $array = (array)$this;
-        $array['component'] = $this->vueComponent ?? ucfirst($this->type);
-
-        return $array;
+        return [
+            'component' => $this->vueComponent ?? ucfirst($this->type),
+            'type' => $this->type,
+            'label' => $this->label,
+            'name' => $this->name,
+            'editable' => $this->editable,
+            'classes' => $this->classes,
+            'options' => $this->options,
+        ];
     }
 
     private function addClass(string $element, $class, $overwrite = false)
