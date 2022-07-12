@@ -45,7 +45,7 @@ abstract class Field
      */
     public function readOnly(bool $readOnly = true)
     {
-        $this->editable = !$readOnly;
+        $this->editable = ! $readOnly;
 
         return $this;
     }
