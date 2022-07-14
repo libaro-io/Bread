@@ -478,7 +478,11 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/libaro-io/.github/blob/main/CONTRIBUTING.md) for details.
+
+## Development Flow
+
+Please see [DEVELOPMENT FLOW](https://github.com/libaro-io/.github/blob/main/DEVELOPMENT_FLOW.md) for details.
 
 ## Security Vulnerabilities
 
