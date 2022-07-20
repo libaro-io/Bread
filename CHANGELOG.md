@@ -4,6 +4,10 @@
 
 - Initial release
 
+## v1.5.2 - 2022-07-20
+
+- Fixes display of tabs
+
 ## v1.5.1 - 2022-07-20
 
 - Add `/docs` directory with documentation files to package
