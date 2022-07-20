@@ -4,6 +4,10 @@
 
 - Initial release
 
+## v1.5.1 - 2022-07-20
+
+- Add `/docs` directory with documentation files to package
+
 ## v1.5.0 - 2022-07-11
 
 Adds Money field type to the IndexRenderer
