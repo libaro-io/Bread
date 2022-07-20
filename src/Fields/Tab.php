@@ -44,6 +44,7 @@ final class Tab extends Field
     public function toArray()
     {
         $array = parent::toArray();
+        $array['title'] = $this->title;
         $array['fields'] = $this->fields->map(function (Field $field) {
             return $field->toArray();
         })->toArray();
