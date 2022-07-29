@@ -77,7 +77,7 @@ final class UserFilter
             Text::make('Email', 'email'),
             Number::make('Age', 'age'),
             Boolean::make('Active', 'active'),
-            Select::make('Role', 'user.role')->options([
+            Select::make('Role', 'user.role', [
                 'admin' => 'Admin',
                 'user' => 'User',
             ])
