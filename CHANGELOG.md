@@ -4,6 +4,11 @@
 
 - Initial release
 
+## v1.5.3 - 2022-07-29
+
+- Updates documentation on usage of Select field
+- Uses LaraStan as PhpStan wrapper
+
 ## v1.5.2 - 2022-07-20
 
 - Fixes display of tabs
