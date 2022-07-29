@@ -49,7 +49,7 @@ final class UserFields implements Invokables
             
             Boolean::make('Active', 'active'),
             
-            Select::make('Role', 'user.role')->options([
+            Select::make('Role', 'user.role', [
                 'admin' => 'Admin',
                 'user' => 'User',
             ]),
@@ -100,17 +100,21 @@ return Fields::add(
 ```
 
 ### Creating your own Field
+
 You can create your own custom Field
 
 ## Manually
+
 - Create a php class which extends the
   `Libaro\Bread\Contracts\Field` class.
 - Create a vue component in `Bread/Resources/ui/Components/Form/Fields`.
 
 ### Using the Bread command
+
 Run `php artisan bread:field NameOfYourField` to create a new field.
 
 Two files will be created:
+
 - `Bread/Fields/Custom/NameOfYourField.php`
 - `Bread/Resources/ui/Components/Form/Fields/NameOfYourField.vue`
 

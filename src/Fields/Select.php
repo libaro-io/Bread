@@ -15,6 +15,7 @@ final class Select extends Field
     /**
      * @param string $name
      * @param string $label
+     * @param Collection $options
      */
     public function __construct(string $name, string $label, Collection $options)
     {
