@@ -6,12 +6,12 @@ namespace Libaro\Bread\Contracts;
 
 abstract class Header
 {
-    protected $value;
+    protected string $value;
     protected string $label;
 
     protected string $type = 'property';
 
-    protected $options = [];
+    protected array $options = [];
 
     protected bool $sortable = false;
     protected bool $editable = false;
@@ -22,14 +22,14 @@ abstract class Header
         $this->setValue($value);
     }
 
-    protected function setLabel(string $label)
+    protected function setLabel(string $label): self
     {
         $this->label = $label;
 
         return $this;
     }
 
-    protected function setValue($value)
+    protected function setValue($value): self
     {
         $this->value = $value;
 
@@ -54,28 +54,28 @@ abstract class Header
      * Available Options
      */
 
-    public function editable(bool $editable = false)
+    public function editable(bool $editable = false): self
     {
         $this->editable = $editable;
 
         return $this;
     }
 
-    public function sortable()
+    public function sortable(): self
     {
         $this->sortable = true;
 
         return $this;
     }
 
-    public function tooltip(string $tooltip)
+    public function tooltip(string $tooltip): self
     {
         $this->setOption('tooltip', $tooltip);
 
         return $this;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'type' => $this->type,
