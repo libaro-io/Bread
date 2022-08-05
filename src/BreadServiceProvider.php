@@ -46,9 +46,11 @@ class BreadServiceProvider extends ServiceProvider
     private function registerMacros(): void
     {
         Builder::macro('filter', function (Filters $filters) {
+            /** @var Builder $this */
             return app(FilterService::class)($this, $filters);
         });
         Builder::macro('sort', function ($defaultColumn = 'id', $defaultDirection = 'desc') {
+            /** @var Builder $this */
             return app(SortingService::class)($this, $defaultColumn, $defaultDirection);
         });
     }
