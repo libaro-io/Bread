@@ -55,7 +55,36 @@ final class UserIndexHeader implements Invokables
 ````
 
 ````php
-namespace App\Domains\Users\Bread;
+namespace Bread\Routes;
+
+use Libaro\Bread\Routes\Edit;
+use Libaro\Bread\Routes\Store;
+use Libaro\Bread\Routes\Index;
+use Libaro\Bread\Routes\Create;
+use Libaro\Bread\Routes\Routes;
+use Libaro\Bread\Routes\Update;
+use Libaro\Bread\Routes\Destroy;
+use Libaro\Bread\Contracts\Renderer;
+use Libaro\Bread\Contracts\Invokables;
+
+final class UserRoutes implements Invokables
+{
+    public function __invoke(Renderer $renderer)
+    {
+        return Routes::add(
+            Index::make('admin.users.index'),
+            Store::make('admin.users.store'),
+            Create::make('admin.users.create'),
+            Edit::make('admin.users.edit', 'id'),
+            Update::make('admin.users.update', 'id'),
+            Destroy::make('admin.users.destroy', 'id'),
+        );
+    }
+}
+````
+
+````php
+namespace App\Bread;
 
 use Libaro\Bread\Filters\Text;
 use Libaro\Bread\Filters\Select;
@@ -63,7 +92,7 @@ use Libaro\Bread\Filters\Number;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Filters\Boolean;
 
-final class UserFilter
+final class UserFilters
 {
     public static function make()
     {
