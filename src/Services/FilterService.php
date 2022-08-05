@@ -33,8 +33,8 @@ final class FilterService
     }
 
     /**
-     * @param $field
-     * @param $value
+     * @param mixed $field
+     * @param mixed $value
      * @return void
      */
     private function applyFilter($field, $value): void
