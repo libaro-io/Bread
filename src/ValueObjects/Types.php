@@ -2,8 +2,8 @@
 
 namespace Libaro\Bread\ValueObjects;
 
-use UnhandledMatchError;
 use Illuminate\Support\Facades\Log;
+use UnhandledMatchError;
 
 class Types
 {
@@ -27,6 +27,7 @@ class Types
             };
         } catch (UnhandledMatchError $e) {
             Log::error("Libaro\Bread\ValueObjects\Types::getLabel($type) => " . $e->getMessage());
+
             return null;
         }
     }
@@ -54,9 +55,9 @@ class Types
                     'Bread/Resources/ui/Components/Filter/Types',
                 ]
             };
-
         } catch (UnhandledMatchError $e) {
             Log::error("Libaro\Bread\ValueObjects\Types::getPaths($type) => " . $e->getMessage());
+
             return null;
         }
     }
