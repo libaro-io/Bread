@@ -13,7 +13,7 @@ final class IndexRenderer extends Renderer
     protected string $title = '';
     protected ?Headers $headers = null;
     protected ?Filters $filters = null;
-    protected $actions = [];
+    protected array $actions = [];
     protected $items = [];
 
     public static function render(): IndexRenderer
@@ -21,7 +21,7 @@ final class IndexRenderer extends Renderer
         return new static();
     }
 
-    public function items($items)
+    public function items($items): self
     {
         $this->items = $items;
 

@@ -15,7 +15,7 @@ use Libaro\Bread\Contracts\Renderer;
 final class FormRenderer extends Renderer
 {
     protected $entity;
-    private $method = 'POST';
+    private string $method = 'POST';
 
     public function __construct($entity = null)
     {
@@ -28,7 +28,7 @@ final class FormRenderer extends Renderer
         $this->entity = $entity;
     }
 
-    public function setMethod($method)
+    public function setMethod(string $method)
     {
         if (! in_array($method, ['POST', 'PUT', 'PATCH'])) {
             throw new \InvalidArgumentException('Invalid method');
@@ -66,7 +66,7 @@ final class FormRenderer extends Renderer
             ->toResponse($request);
     }
 
-    public function getClasses()
+    public function getClasses(): array
     {
         return $this->classes;
     }
