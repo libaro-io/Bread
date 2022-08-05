@@ -8,7 +8,7 @@ use Libaro\Bread\Contracts\Field;
 
 final class Image extends Field
 {
-    public $type = 'image';
+    public string $type = 'image';
 
     public $collection = 'images';
 
