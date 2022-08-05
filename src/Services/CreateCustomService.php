@@ -32,14 +32,14 @@ class CreateCustomService
         return [$pathPhp, $pathVue];
     }
 
-    protected static function copyStub($path, $stub, $name, $extension)
+    protected static function copyStub(string $path, string $stub, string $name, string $extension): void
     {
         File::isDirectory($path) or File::makeDirectory($path, 0777, true, true);
 
         File::put("$path/$name.$extension", self::getContent($stub, $name));
     }
 
-    protected static function getContent($stub, $name): string
+    protected static function getContent(string $stub, string $name): string
     {
         $contents = File::get($stub);
 
