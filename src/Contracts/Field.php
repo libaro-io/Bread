@@ -16,7 +16,7 @@ abstract class Field
         ],
     ];
     /**
-     * @var array $options
+     * @var array
      */
     protected $options;
 
