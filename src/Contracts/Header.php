@@ -29,13 +29,18 @@ abstract class Header
         return $this;
     }
 
-    protected function setValue($value): self
+    protected function setValue(string $value): self
     {
         $this->value = $value;
 
         return $this;
     }
 
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return $this
+     */
     protected function setOption(string $key, $value): self
     {
         $this->options[$key] = $value;

@@ -6,16 +6,16 @@ namespace Libaro\Bread\Contracts;
 
 abstract class Route
 {
-    protected $name;
+    protected string $name;
 
-    abstract public function __construct($name);
+    abstract public function __construct(string $name);
 
-    public static function make($name)
+    public static function make(string $name)
     {
         return new static($name);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -25,7 +25,7 @@ abstract class Route
         return strtolower(class_basename($this));
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return ['name' => $this->name];
     }

@@ -16,9 +16,9 @@ abstract class Renderer implements Responsable
     protected $entity;
     protected $items;
     protected $resource;
-    protected $classes = [];
+    protected array $classes = [];
     protected ?Collection $components;
-    protected $fields;
+    protected  $fields;
     protected ?Routes $routes = null;
 
     protected string $deleteMessage = 'Weet je zeker dat je dit wilt verwijderen.';

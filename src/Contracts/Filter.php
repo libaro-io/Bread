@@ -59,7 +59,12 @@ abstract class Filter
         return $this;
     }
 
-    public function setOption(string $key, string $value): void
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function setOption(string $key, $value): void
     {
         $this->options[$key] = $value;
     }
