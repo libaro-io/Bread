@@ -15,7 +15,10 @@ abstract class Field
             'mt-6',
         ],
     ];
-    protected array $options;
+    /**
+     * @var array $options
+     */
+    protected $options;
 
     public string $vueComponent;
 
