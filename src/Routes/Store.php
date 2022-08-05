@@ -8,15 +8,15 @@ use Libaro\Bread\Contracts\Route;
 
 final class Store extends Route
 {
-    protected $identifier = 'id';
+    protected string $identifier = 'id';
 
-    public function __construct($name, $identifier = 'id')
+    public function __construct(string $name, string $identifier = 'id')
     {
         $this->name = $name;
         $this->identifier = $identifier;
     }
 
-    public static function make($name, $identifier = 'id')
+    public static function make(string $name, string $identifier = 'id'): self
     {
         return new static($name, $identifier);
     }

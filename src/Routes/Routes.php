@@ -9,14 +9,14 @@ use Libaro\Bread\Contracts\Route;
 
 final class Routes
 {
-    protected $routes;
+    protected Collection $routes;
 
     public function __construct()
     {
         $this->routes = new Collection();
     }
 
-    public static function add(...$routes)
+    public static function add(Route ...$routes): self
     {
         $class = new self();
 
@@ -27,7 +27,7 @@ final class Routes
         return $class;
     }
 
-    public function push(Route $header)
+    public function push(Route $header): self
     {
         $this->routes->push($header);
 
@@ -39,7 +39,7 @@ final class Routes
         return $this->routes;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return $this->routes->mapWithKeys(function (Route $route) {
             return [
