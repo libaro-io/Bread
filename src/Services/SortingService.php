@@ -16,7 +16,13 @@ final class SortingService
         $this->request = $request;
     }
 
-    public function __invoke(Builder $builder, $defaultColumn, $defaultDirection): Builder
+    /**
+     * @param Builder $builder
+     * @param mixed $defaultColumn
+     * @param string $defaultDirection
+     * @return Builder
+     */
+    public function __invoke(Builder $builder, $defaultColumn, string $defaultDirection): Builder
     {
         if ($request = $this->request->get('sort')) {
             $builder->orderBy($request['column'], $request['direction']);
