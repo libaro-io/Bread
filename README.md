@@ -23,7 +23,9 @@ composer require libaro/bread
 
 Run following command to publish the javascript files needed to render the index and form pages.
 
-`php artisan vendor:publish --tag=bread --force`
+```bash
+php artisan vendor:publish --tag=bread --force
+```
 
 This will add the following to your project:
 
@@ -83,12 +85,16 @@ module.exports = {
 
 Bread requires the following dependencies, be sure to install these in your project:
 
-`npm install -D tailwindcss@^3.1 postcss autoprefixer vue@^3.2
+```bash
+npm install -D tailwindcss@^3.1 postcss autoprefixer vue@^3.2
 @inertiajs/inertia@^0.11.0 @inertiajs/inertia-vue3@^0.6.0
 unplugin-vue-define-options@^0.6.1 @tailwindcss/forms@^0.4.0
-@headlessui/vue@^1.6 pinia@^2.0.0 uuid@^8.3.2 luxon@^2.4.0`
+@headlessui/vue@^1.6 pinia@^2.0.0 uuid@^8.3.2 luxon@^2.4.0
+```
 
-`composer require tightenco/ziggy`
+```bash
+composer require tightenco/ziggy
+```
 
 ## Testing
 
