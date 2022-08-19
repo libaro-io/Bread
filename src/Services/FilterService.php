@@ -24,7 +24,7 @@ final class FilterService
     {
         $this->builder = $builder;
         $this->filters = $filters->get();
-        $requestFilters = $this->request->query('filters', []);
+        $requestFilters = (array) $this->request->query('filters', []);
         foreach ($requestFilters as $field => $value) {
             $this->applyFilter($field, $value);
         }
