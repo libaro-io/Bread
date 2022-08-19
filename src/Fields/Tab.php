@@ -11,15 +11,20 @@ final class Tab extends Field
 {
     public string $type = 'tab';
 
-    public $fields;
-    protected $title;
+    public Collection $fields;
+    protected string $title;
 
     public function __construct()
     {
         $this->fields = new Collection();
     }
 
-    public static function make($title, ...$fields)
+    /**
+     * @param $title
+     * @param Collection ...$fields
+     * @return Tab
+     */
+    public static function make(string $title, ...$fields): Tab
     {
         $class = new self();
         $class->setTitle($title);
@@ -31,7 +36,7 @@ final class Tab extends Field
         return $class;
     }
 
-    public function setTitle(string $title)
+    public function setTitle(string $title): Tab
     {
         $this->title = $title;
 
