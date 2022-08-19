@@ -15,7 +15,11 @@ class Filters
         $this->filters = new Collection();
     }
 
-    public static function add(...$filters)
+    /**
+     * @param mixed ...$filters
+     * @return Filters
+     */
+    public static function add(...$filters): Filters
     {
         $class = new self();
 
@@ -26,7 +30,7 @@ class Filters
         return $class;
     }
 
-    public function push(Filter $filter)
+    public function push(Filter $filter): Filters
     {
         $this->filters->push($filter);
 
@@ -38,7 +42,7 @@ class Filters
         return $this->filters;
     }
 
-    public function toArray()
+    public function toArray(): stdClass
     {
         $class = new stdClass();
         $class->data = $this->filters
@@ -52,14 +56,14 @@ class Filters
         return $class;
     }
 
-    public function sideBarStarsAt(int $int)
+    public function sideBarStarsAt(int $int): Filters
     {
         $this->sideBarStarsAt = $int;
 
         return $this;
     }
 
-    public function getOptions()
+    public function getOptions(): array
     {
         return [
             'sidebar_starts_at' => $this->sideBarStarsAt,
