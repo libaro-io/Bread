@@ -22,7 +22,7 @@ final class MultiSelect extends Field
         $this->options = $options;
     }
 
-    public static function make(string $name, string $label, Collection $options)
+    public static function make(string $name, string $label, Collection $options): MultiSelect
     {
         return new self($name, $label, $options);
     }
