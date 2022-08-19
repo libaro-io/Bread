@@ -66,7 +66,6 @@ abstract class Renderer implements Responsable
         return $this;
     }
 
-
     /**
      * @param mixed $classes
      * @return $this
