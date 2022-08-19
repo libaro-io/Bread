@@ -16,7 +16,7 @@ final class Date extends Header
         $this->setType('date');
     }
 
-    public static function make(string $label, string $value, string $format = 'DD-MM-YYYY HH:mm')
+    public static function make(string $label, string $value, string $format = 'DD-MM-YYYY HH:mm'): Date
     {
         return new self($label, $value, $format);
     }
