@@ -13,12 +13,15 @@ abstract class Renderer implements Responsable
 {
     protected string $title = '';
     protected string $action = '';
+
+    /**
+     * @var mixed
+     */
     protected $entity;
 
     /**
      * @var mixed
      */
-
     protected $items;
     /**
      * @var mixed
@@ -26,6 +29,10 @@ abstract class Renderer implements Responsable
     protected $resource;
     protected array $classes = [];
     protected ?Collection $components;
+
+    /**
+     * @var mixed
+     */
     protected $fields;
     protected ?Routes $routes = null;
 
@@ -50,7 +57,7 @@ abstract class Renderer implements Responsable
         return $this;
     }
 
-    public function with(array $array)
+    public function with(array $array): self
     {
         foreach ($array as $key => $value) {
             $this->{$key} = $value;
@@ -59,7 +66,12 @@ abstract class Renderer implements Responsable
         return $this;
     }
 
-    public function classes($classes)
+
+    /**
+     * @param mixed $classes
+     * @return $this
+     */
+    public function classes($classes): self
     {
         if (is_string($classes)) {
             $classes = explode(' ', $classes);
@@ -72,7 +84,7 @@ abstract class Renderer implements Responsable
         return $this;
     }
 
-    public function __call($name, array $arguments)
+    public function __call(string $name, array $arguments): self
     {
         if (method_exists($this, $name)) {
             return $this->{$name}(...$arguments);
@@ -97,11 +109,17 @@ abstract class Renderer implements Responsable
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function getEntity()
     {
         return $this->entity;
     }
 
+    /**
+     * @return mixed|string
+     */
     protected function guessResource()
     {
         if ($this->resource) {
@@ -123,6 +141,10 @@ abstract class Renderer implements Responsable
         return $this->resource;
     }
 
+    /**
+     * @param mixed ...$components
+     * @return $this
+     */
     public function components(...$components)
     {
         foreach ($components as $i => $component) {

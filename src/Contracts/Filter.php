@@ -120,6 +120,9 @@ abstract class Filter
         return $this->filterMethods;
     }
 
+    /**
+     * @return mixed
+     */
     private function getValue()
     {
         return app('request')->input("filters.{$this->getField()}");
