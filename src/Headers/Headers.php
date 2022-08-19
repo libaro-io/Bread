@@ -17,7 +17,11 @@ final class Headers
         $this->headers = new Collection();
     }
 
-    public static function add(...$headers)
+    /**
+     * @param mixed ...$headers
+     * @return Headers
+     */
+    public static function add(...$headers): Headers
     {
         $class = new self();
 
@@ -28,7 +32,7 @@ final class Headers
         return $class;
     }
 
-    public function push(Header $header)
+    public function push(Header $header): Headers
     {
         $this->headers->push($header);
 
@@ -40,7 +44,7 @@ final class Headers
         return $this->headers;
     }
 
-    public function toArray()
+    public function toArray(): Fluent
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->headers
@@ -54,7 +58,7 @@ final class Headers
         return $class;
     }
 
-    public function getOptions()
+    public function getOptions(): array
     {
         return [];
     }
