@@ -19,6 +19,9 @@ The full documentation is installed with the package under `/docs`
 composer require libaro/bread
 ```
 
+## Vite Support
+TODO: Add documentation for vite support
+
 ## Publish resource files
 
 Run following command to publish the javascript files needed to render the index and form pages.
