@@ -16,7 +16,7 @@ final class Rating extends Header
         $this->setType('rating');
     }
 
-    public static function make(string $label, string $value, array $options)
+    public static function make(string $label, string $value, array $options): Rating
     {
         return new self($label, $value, $options);
     }
