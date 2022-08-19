@@ -14,6 +14,10 @@ final class IndexRenderer extends Renderer
     protected ?Headers $headers = null;
     protected ?Filters $filters = null;
     protected array $actions = [];
+
+    /**
+     * @var mixed
+     */
     protected $items = [];
 
     public static function render(): IndexRenderer
@@ -21,6 +25,11 @@ final class IndexRenderer extends Renderer
         return new static();
     }
 
+
+    /**
+     * @param mixed $items
+     * @return $this
+     */
     public function items($items): self
     {
         $this->items = $items;

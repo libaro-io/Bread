@@ -6,6 +6,7 @@ namespace Libaro\Bread\Renderers;
 
 use Illuminate\Database\Eloquent\Model;
 use Libaro\Bread\Contracts\Renderer;
+use phpDocumentor\Reflection\Types\Mixed_;
 
 /**
  * @method fields(string $class)
@@ -14,9 +15,15 @@ use Libaro\Bread\Contracts\Renderer;
  */
 final class FormRenderer extends Renderer
 {
+    /**
+     * @var Model|mixed
+     */
     protected $entity;
     private string $method = 'POST';
 
+    /**
+     * @param mixed $entity
+     */
     public function __construct($entity = null)
     {
         parent::__construct();
@@ -28,7 +35,7 @@ final class FormRenderer extends Renderer
         $this->entity = $entity;
     }
 
-    public function setMethod(string $method)
+    public function setMethod(string $method): FormRenderer
     {
         if (! in_array($method, ['POST', 'PUT', 'PATCH'])) {
             throw new \InvalidArgumentException('Invalid method');
@@ -39,11 +46,15 @@ final class FormRenderer extends Renderer
         return $this;
     }
 
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->method;
     }
 
+    /**
+     * @param mixed $entity
+     * @return FormRenderer
+     */
     public static function render($entity = null): FormRenderer
     {
         return new FormRenderer($entity);
@@ -71,7 +82,7 @@ final class FormRenderer extends Renderer
         return $this->classes;
     }
 
-    protected function guessResource()
+    protected function guessResource(): string
     {
         if ($this->resource) {
             return $this->resource;

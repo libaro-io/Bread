@@ -14,7 +14,15 @@ abstract class Renderer implements Responsable
     protected string $title = '';
     protected string $action = '';
     protected $entity;
+
+    /**
+     * @var mixed $items
+     */
+
     protected $items;
+    /**
+     * @var mixed $resource
+     */
     protected $resource;
     protected array $classes = [];
     protected ?Collection $components;
