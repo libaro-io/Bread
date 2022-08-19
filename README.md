@@ -13,6 +13,8 @@ by describing which fields to use.
 
 The full documentation is installed with the package under `/docs`
 
+Bread is a Laravel package to be used in combination with Inertia, Tailwind and Vue. So be sure to have these installed and configured.
+
 ## Installation
 
 ```bash
@@ -86,10 +88,7 @@ module.exports = {
 Bread requires the following dependencies, be sure to install these in your project:
 
 ```bash
-npm install -D tailwindcss@^3.1 postcss autoprefixer vue@^3.2
-@inertiajs/inertia@^0.11.0 @inertiajs/inertia-vue3@^0.6.0
-unplugin-vue-define-options@^0.6.1 @tailwindcss/forms@^0.4.0
-@headlessui/vue@^1.6 pinia@^2.0.0 uuid@^8.3.2 luxon@^2.4.0
+npm install -D tailwindcss@^3.1 postcss autoprefixer vue@^3.2 @inertiajs/inertia@^0.11.0 @inertiajs/inertia-vue3@^0.6.0 unplugin-vue-define-options@^0.6.1 @tailwindcss/forms@^0.4.0 @headlessui/vue@^1.6 pinia@^2.0.0 uuid@^8.3.2 luxon@^2.4.0
 ```
 
 ```bash
