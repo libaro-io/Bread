@@ -15,17 +15,22 @@ class Select extends Filter
         $this->setOption('values', $values);
     }
 
-    public static function make(string $label, string $field, array $values)
+    public static function make(string $label, string $field, array $values): Select
     {
         return new self($label, $field, $values);
     }
 
-    public function multi(bool $multi = true)
+    public function multi(bool $multi = true): void
     {
         $this->setOption('multiple', $multi);
     }
 
-    public function apply(Builder $builder, $value)
+    /**
+     * @param Builder $builder
+     * @param mixed $value
+     * @return Builder
+     */
+    public function apply(Builder $builder, $value): Builder
     {
         if ($this->options['multiple']) {
             return $builder->whereIn($this->field, $value);
