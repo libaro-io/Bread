@@ -16,12 +16,12 @@ abstract class Renderer implements Responsable
     protected $entity;
 
     /**
-     * @var mixed $items
+     * @var mixed
      */
 
     protected $items;
     /**
-     * @var mixed $resource
+     * @var mixed
      */
     protected $resource;
     protected array $classes = [];

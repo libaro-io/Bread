@@ -6,7 +6,6 @@ namespace Libaro\Bread\Renderers;
 
 use Illuminate\Database\Eloquent\Model;
 use Libaro\Bread\Contracts\Renderer;
-use phpDocumentor\Reflection\Types\Mixed_;
 
 /**
  * @method fields(string $class)

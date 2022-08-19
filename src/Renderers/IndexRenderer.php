@@ -25,7 +25,6 @@ final class IndexRenderer extends Renderer
         return new static();
     }
 
-
     /**
      * @param mixed $items
      * @return $this
