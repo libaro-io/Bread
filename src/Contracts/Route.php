@@ -10,6 +10,10 @@ abstract class Route
 
     abstract public function __construct(string $name);
 
+    /**
+     * @param string $name
+     * @return static
+     */
     public static function make(string $name)
     {
         return new static($name);
@@ -20,7 +24,7 @@ abstract class Route
         return $this->name;
     }
 
-    public function getType()
+    public function getType(): string
     {
         return strtolower(class_basename($this));
     }
