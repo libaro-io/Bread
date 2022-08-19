@@ -44,7 +44,7 @@ final class Headers
         return $this->headers;
     }
 
-    public function toArray(): Fluent
+    public function toArray(): Fluent           // TODO
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->headers

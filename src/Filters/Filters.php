@@ -42,7 +42,7 @@ class Filters
         return $this->filters;
     }
 
-    public function toArray(): stdClass
+    public function toArray(): stdClass         // TODO
     {
         $class = new stdClass();
         $class->data = $this->filters
