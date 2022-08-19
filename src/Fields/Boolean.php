@@ -9,9 +9,9 @@ use Libaro\Bread\Contracts\Field;
 final class Boolean extends Field
 {
     public string $type = 'boolean';
-    public $attributes = [];
+    public array $attributes = [];
 
-    public static function make(string $name, string $label, array $attributes = [])
+    public static function make(string $name, string $label, array $attributes = []): self
     {
         return new self($name, $label, $attributes);
     }
@@ -22,7 +22,7 @@ final class Boolean extends Field
         $this->attributes = $attributes;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         $array = parent::toArray();
         $array['attributes'] = $this->attributes;

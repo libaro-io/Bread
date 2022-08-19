@@ -47,7 +47,7 @@ class Fields
         return $this->fields;
     }
 
-    public function toArray(): Fluent
+    public function toArray(): Fluent       // TODO
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->fields
