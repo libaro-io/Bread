@@ -16,7 +16,11 @@ class Fields
         $this->fields = new Collection();
     }
 
-    public static function add(...$fields)
+    /**
+     * @param mixed ...$fields
+     * @return Fields
+     */
+    public static function add(...$fields): Fields
     {
         $class = new self();
 
@@ -27,7 +31,11 @@ class Fields
         return $class;
     }
 
-    public function push($field)
+    /**
+     * @param mixed $field
+     * @return $this
+     */
+    public function push($field): Fields
     {
         $this->fields->push($field);
 
@@ -39,7 +47,7 @@ class Fields
         return $this->fields;
     }
 
-    public function toArray()
+    public function toArray(): Fluent
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->fields
@@ -53,7 +61,7 @@ class Fields
         return $class;
     }
 
-    public function getOptions()
+    public function getOptions(): array
     {
         return [];
     }
