@@ -15,7 +15,7 @@ final class Text extends Header
         $this->setType('property');
     }
 
-    public static function make(string $label, string $value)
+    public static function make(string $label, string $value): Text
     {
         return new self($label, $value);
     }
