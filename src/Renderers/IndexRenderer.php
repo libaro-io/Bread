@@ -39,6 +39,8 @@ final class IndexRenderer extends Renderer
     public function toResponse($request)
     {
         // TODO : fix "Call to an undefined method Inertia\Response|Inertia\ResponseFactory::with()"
+        // temporarily just ignoring phpstan for this line:
+        /** @phpstan-ignore-next-line */
         return inertia('Bread::Index')
             ->with([
                 'headers' => $this->headers->toArray(),
