@@ -8,6 +8,10 @@ use Libaro\Bread\ValueObjects\Types;
 
 class CreateCustomService
 {
+    /**
+     * @param mixed $name
+     * @return bool
+     */
     public static function isNameValid($name): bool
     {
         $isValid = preg_match(
@@ -18,6 +22,10 @@ class CreateCustomService
         return (bool) $isValid;
     }
 
+    /**
+     * @param mixed $name
+     * @return string
+     */
     public static function transformName($name): string
     {
         return Str::ucfirst(Str::camel($name));
