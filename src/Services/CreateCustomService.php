@@ -10,10 +10,11 @@ class CreateCustomService
 {
     public static function isNameValid(string $name): bool
     {
-        return preg_match(
+        $isValid = preg_match(
             '/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/',
             $name
         );
+        return (bool) $isValid;
     }
 
     public static function transformName(string $name): string
