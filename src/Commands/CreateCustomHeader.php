@@ -17,7 +17,8 @@ class CreateCustomHeader extends Command
         $name = $this->argument('name');
 
         if (! CreateCustomService::isNameValid($name)) {
-            $this->error("Name: '$name' is not valid");
+            $displayName = is_string($name) ? $name : "<uncastable to string>";
+            $this->error("Name: '$displayName' is not valid");
 
             return 0;
         }
