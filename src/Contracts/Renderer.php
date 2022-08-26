@@ -128,7 +128,7 @@ abstract class Renderer implements Responsable
         $first = $this->items->first();
 
         if ($first === null && $this->items instanceof LengthAwarePaginator) {
-            $path = explode('/', $this->items->path());
+            $path = ($this->items->path()) ? explode('/', $this->items->path()) : [];
             $this->resource = $path[count($path) - 1];
         }
 
@@ -150,7 +150,9 @@ abstract class Renderer implements Responsable
             $class = new $component();
             $methods = get_class_methods($class);
             foreach ($methods as $methodKey => $method) {
-                $this->components->put($method, $class->{$method}());
+                if($this->components){
+                    $this->components->put($method, $class->{$method}());
+                }
             }
         }
 
@@ -159,12 +161,12 @@ abstract class Renderer implements Responsable
 
     public function getComponents(): array
     {
-        return $this->components->map(function ($components) {
+        return $this->components ? $this->components->map(function ($components) {
             if ($components === null) {
                 return $components;
             }
 
             return $components->toArray();
-        })->toArray();
+        })->toArray() : [];
     }
 }

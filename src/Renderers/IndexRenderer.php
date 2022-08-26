@@ -43,7 +43,7 @@ final class IndexRenderer extends Renderer
         /** @phpstan-ignore-next-line */
         return inertia('Bread::Index')
             ->with([
-                'headers' => $this->headers->toArray(),
+                'headers' => $this->headers ? $this->headers->toArray() : [],
                 'filters' => optional($this->filters)->toArray() ?? [],
                 'actions' => $this->actions,
                 'items' => $this->items,
