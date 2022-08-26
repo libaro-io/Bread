@@ -25,9 +25,13 @@ final class SortingService
     public function __invoke(Builder $builder, $defaultColumn, string $defaultDirection): Builder
     {
         if ($request = $this->request->get('sort')) {
-            $builder->orderBy($request['column'], $request['direction']);
+            if(is_array($request)){
+                $builder->orderBy($request['column'], $request['direction']);
+            }
         } else {
-            $builder->orderBy($defaultColumn, $defaultDirection);
+            if(is_string($defaultColumn) && is_string($defaultDirection)){
+                $builder->orderBy($defaultColumn, $defaultDirection);
+            }
         }
 
         return $builder;
