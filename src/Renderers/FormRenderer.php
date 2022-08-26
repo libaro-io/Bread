@@ -82,7 +82,7 @@ final class FormRenderer extends Renderer
         return $this->classes;
     }
 
-    protected function guessResource(): string
+    protected function guessResource()
     {
         if ($this->resource) {
             return $this->resource;

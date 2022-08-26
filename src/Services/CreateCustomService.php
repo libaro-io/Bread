@@ -8,7 +8,7 @@ use Libaro\Bread\ValueObjects\Types;
 
 class CreateCustomService
 {
-    public static function isNameValid(string $name): bool
+    public static function isNameValid($name): bool
     {
         $isValid = preg_match(
             '/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/',
@@ -18,7 +18,7 @@ class CreateCustomService
         return (bool) $isValid;
     }
 
-    public static function transformName(string $name): string
+    public static function transformName($name): string
     {
         return Str::ucfirst(Str::camel($name));
     }
