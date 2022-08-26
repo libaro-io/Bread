@@ -38,6 +38,7 @@ final class IndexRenderer extends Renderer
 
     public function toResponse($request)
     {
+        // TODO : fix "Call to an undefined method Inertia\Response|Inertia\ResponseFactory::with()"
         return inertia('Bread::Index')
             ->with([
                 'headers' => $this->headers->toArray(),
