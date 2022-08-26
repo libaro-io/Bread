@@ -33,7 +33,7 @@ class CreateCustomService
 
     public static function copyFiles(string $name, int $type): array
     {
-        [$pathPhp, $pathVue] = Types::getPaths($type);
+        [$pathPhp, $pathVue] = Types::getPaths($type) ?? [] ;
         [$stubPhp, $stubVue] = Types::getStubs($type);
 
         self::copyStub($pathPhp, $stubPhp, $name, 'php');
