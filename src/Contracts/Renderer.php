@@ -150,7 +150,7 @@ abstract class Renderer implements Responsable
             $class = new $component();
             $methods = get_class_methods($class);
             foreach ($methods as $methodKey => $method) {
-                if($this->components){
+                if ($this->components) {
                     $this->components->put($method, $class->{$method}());
                 }
             }
