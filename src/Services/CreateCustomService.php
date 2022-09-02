@@ -23,7 +23,7 @@ class CreateCustomService
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      * @return string
      */
     public static function transformName($name): string
