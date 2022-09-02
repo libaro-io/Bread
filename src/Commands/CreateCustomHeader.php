@@ -15,10 +15,10 @@ class CreateCustomHeader extends Command
     public function handle(): int
     {
         $name = $this->argument('name');
+        $name = is_string($name) ? $name : '';
 
-        if (! CreateCustomService::isNameValid($name)) {
-            $displayName = is_string($name) ? $name : "<uncastable to string>";
-            $this->error("Name: '$displayName' is not valid");
+        if (!CreateCustomService::isNameValid($name)) {
+            $this->error("Name: '$name' is not valid");
 
             return 0;
         }
@@ -27,7 +27,7 @@ class CreateCustomHeader extends Command
 
         [$php, $vue] = CreateCustomService::copyFiles($name, Types::Header);
 
-        if (! $php) {
+        if (!$php) {
             $this->error("Custom Header: '$name' could not be created");
 
             return 0;
