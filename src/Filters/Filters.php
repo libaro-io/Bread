@@ -16,7 +16,7 @@ class Filters
     }
 
     /**
-     * @param mixed ...$filters
+     * @param Filter ...$filters
      * @return Filters
      */
     public static function add(...$filters): Filters
@@ -46,6 +46,8 @@ class Filters
     {
         $class = new stdClass();
         $class->data = $this->filters
+            // TODO
+            /** @phpstan-ignore-next-line */
             ->map(function (Filter $filter) {
                 return $filter->toArray();
             })
