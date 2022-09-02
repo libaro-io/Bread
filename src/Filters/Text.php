@@ -22,11 +22,15 @@ class Text extends Filter
 
     /**
      * @param Builder $builder
-     * @param mixed $value
+     * @param string $value
      * @return Builder
      */
     public function apply(Builder $builder, $value): Builder
     {
-        return $builder->where($this->getField(), $this->getOperator(), "%$value%");
+//        \PHPStan\dumpType($value);
+
+
+        return $builder
+            ->where($this->getField(), $this->getOperator(), "%$value%");
     }
 }
