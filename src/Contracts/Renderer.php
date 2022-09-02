@@ -76,8 +76,10 @@ abstract class Renderer implements Responsable
             $classes = explode(' ', $classes);
         }
 
-        foreach ($classes as $class) {
-            $this->classes[] = $class;
+        if (is_iterable($classes)) {
+            foreach ($classes as $class) {
+                $this->classes[] = $class;
+            }
         }
 
         return $this;
@@ -93,7 +95,7 @@ abstract class Renderer implements Responsable
             $class = $arguments[0];
             if (is_string($class)) {
                 $class = app()->make($arguments[0]);
-                if (! $class instanceof Invokables) {
+                if (!$class instanceof Invokables) {
                     throw new \Exception('Class must implement Invokables.');
                 }
                 $this->$name = $class($this);
@@ -125,6 +127,8 @@ abstract class Renderer implements Responsable
             return $this->resource;
         }
 
+        // TODO
+        /** @phpstan-ignore-next-line */
         $first = $this->items->first();
 
         if ($first === null && $this->items instanceof LengthAwarePaginator) {
@@ -166,7 +170,9 @@ abstract class Renderer implements Responsable
                 return $components;
             }
 
-            return $components->toArray();
+            // TODO: check by Johan if this is ok (code change for phpstan level 9)
+            return $components;
+//            return $components->toArray();
         })->toArray() : [];
     }
 }
