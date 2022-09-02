@@ -10,6 +10,9 @@ use Libaro\Bread\Contracts\Field;
 final class Tabs extends Field
 {
     public string $type = 'tabs';
+    /**
+     * @var Collection<Tab>
+     */
     public Collection $tabs;
 
     public function __construct()
@@ -18,7 +21,7 @@ final class Tabs extends Field
     }
 
     /**
-     * @param mixed ...$tabs
+     * @param Tab ...$tabs
      * @return Tabs
      */
     public static function add(...$tabs): Tabs
