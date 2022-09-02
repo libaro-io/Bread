@@ -18,7 +18,7 @@ final class Headers
     }
 
     /**
-     * @param mixed ...$headers
+     * @param Header ...$headers
      * @return Headers
      */
     public static function add(...$headers): Headers
