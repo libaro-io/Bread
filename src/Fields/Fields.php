@@ -6,9 +6,14 @@ namespace Libaro\Bread\Fields;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
+use Libaro\Bread\Contracts\Field;
 
 class Fields
 {
+
+    /**
+     * @var Collection<Field>
+     */
     private Collection $fields;
 
     public function __construct()
@@ -51,7 +56,10 @@ class Fields
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->fields
-            ->map(function ($field) {
+            // TODO
+            /** @phpstan-ignore-next-line */
+            ->map(function (Field $field) {
+//                \PHPStan\dumpType($field);
                 return $field->toArray();
             })
             ->toArray());

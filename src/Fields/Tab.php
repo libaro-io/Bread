@@ -50,6 +50,9 @@ final class Tab extends Field
     {
         $array = parent::toArray();
         $array['title'] = $this->title;
+
+        // TODO
+        /** @phpstan-ignore-next-line */
         $array['fields'] = $this->fields->map(function (Field $field) {
             return $field->toArray();
         })->toArray();
