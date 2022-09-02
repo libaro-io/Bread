@@ -9,7 +9,7 @@ use Libaro\Bread\ValueObjects\Types;
 class CreateCustomService
 {
     /**
-     * @param mixed $name
+     * @param string $name
      * @return bool
      */
     public static function isNameValid($name): bool
