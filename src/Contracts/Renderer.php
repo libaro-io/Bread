@@ -95,7 +95,7 @@ abstract class Renderer implements Responsable
             $class = $arguments[0];
             if (is_string($class)) {
                 $class = app()->make($arguments[0]);
-                if (!$class instanceof Invokables) {
+                if (! $class instanceof Invokables) {
                     throw new \Exception('Class must implement Invokables.');
                 }
                 $this->$name = $class($this);

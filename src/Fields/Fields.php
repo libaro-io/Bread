@@ -10,7 +10,6 @@ use Libaro\Bread\Contracts\Field;
 
 class Fields
 {
-
     /**
      * @var Collection<Field>
      */
