@@ -128,7 +128,7 @@ abstract class Renderer implements Responsable
         }
 
         // TODO
-        /** @phpstan-ignore-next-line */
+//        /** @phpstan-ignore-next-line */
         $first = $this->items->first();
 
         if ($first === null && $this->items instanceof LengthAwarePaginator) {
