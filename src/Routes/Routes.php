@@ -41,6 +41,8 @@ final class Routes
 
     public function toArray(): array
     {
+        // TODO
+        /** @phpstan-ignore-next-line */
         return $this->routes->mapWithKeys(function (Route $route) {
             return [
                 $route->getType() => $route->toArray(),
