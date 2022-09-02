@@ -48,6 +48,8 @@ final class Headers
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->headers
+            // TODO
+            /** @phpstan-ignore-next-line */
             ->map(function (Header $header) {
                 return $header->toArray();
             })
