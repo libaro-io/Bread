@@ -68,9 +68,13 @@ final class FormRenderer extends Renderer
             ->with([
                 'title' => $this->title,
                 'entity' => $this->entity,
+                // TODO
+                /** @phpstan-ignore-next-line */
                 'fields' => optional($this->fields)->toArray() ?? [],
                 'action' => $this->action,
                 'method' => $this->getMethod(),
+                // TODO
+                /** @phpstan-ignore-next-line */
                 'routes' => optional($this->routes)->toArray() ?? [],
                 'resource' => $this->guessResource(),
                 'classes' => $this->getClasses(),
