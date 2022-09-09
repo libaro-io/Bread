@@ -129,8 +129,7 @@ abstract class Renderer implements Responsable
             return $this->resource;
         }
 
-        // TODO
-//        /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore-next-line */
         $first = $this->items->first();
 
         if ($first === null && $this->items instanceof LengthAwarePaginator) {
@@ -172,7 +171,7 @@ abstract class Renderer implements Responsable
                 return $components;
             }
 
-            /** @phpstan-ignore-next-line  */
+            /** @phpstan-ignore-next-line */
             return $components->toArray();
         })->toArray() : [];
     }
