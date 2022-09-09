@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Libaro\Bread\Contracts;
 
+use Libaro\Bread\Fields\Fields;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -30,8 +31,9 @@ abstract class Renderer implements Responsable
     protected array $classes = [];
     protected ?Collection $components;
 
+
     /**
-     * @var mixed
+     * @var ?Fields
      */
     protected $fields;
     protected ?Routes $routes = null;
