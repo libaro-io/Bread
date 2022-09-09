@@ -58,7 +58,6 @@ class Fields
             // TODO
             /** @phpstan-ignore-next-line */
             ->map(function (Field $field) {
-//                \PHPStan\dumpType($field);
                 return $field->toArray();
             })
             ->toArray());
