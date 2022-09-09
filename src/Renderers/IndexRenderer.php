@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Libaro\Bread\Renderers;
 
+use Inertia\Inertia;
 use Libaro\Bread\Contracts\Renderer;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Headers\Headers;
@@ -36,12 +37,8 @@ final class IndexRenderer extends Renderer
         return $this;
     }
 
-    public function toResponse($request)
     {
-        // TODO : fix "Call to an undefined method Inertia\Response|Inertia\ResponseFactory::with()"
-        // temporarily just ignoring phpstan for this line:
-        /** @phpstan-ignore-next-line */
-        return inertia('Bread::Index')
+        return Inertia::render('Bread::Index')
             ->with([
                 'headers' => $this->headers ? $this->headers->toArray() : [],
                 'filters' => $this->filters ? $this->filters->toArray() : [],
