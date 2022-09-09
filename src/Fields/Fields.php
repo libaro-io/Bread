@@ -11,7 +11,7 @@ use Libaro\Bread\Contracts\Field;
 class Fields
 {
     /**
-     * @var Collection<Field>
+     * @var Collection<int, Field>
      */
     private Collection $fields;
 
@@ -21,7 +21,7 @@ class Fields
     }
 
     /**
-     * @param mixed ...$fields
+     * @param Field ...$fields
      * @return Fields
      */
     public static function add(...$fields): Fields
@@ -36,10 +36,10 @@ class Fields
     }
 
     /**
-     * @param mixed $field
+     * @param Field $field
      * @return $this
      */
-    public function push($field): Fields
+    public function push(Field $field): Fields
     {
         $this->fields->push($field);
 
@@ -55,8 +55,6 @@ class Fields
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->fields
-            // TODO
-            /** @phpstan-ignore-next-line */
             ->map(function (Field $field) {
                 return $field->toArray();
             })
