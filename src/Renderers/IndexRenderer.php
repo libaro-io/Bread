@@ -1,13 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Libaro\Bread\Renderers;
 
-use Inertia\Inertia;
 use Illuminate\Http\JsonResponse;
+use Inertia\Inertia;
+use Libaro\Bread\Contracts\Renderer;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Headers\Headers;
-use Libaro\Bread\Contracts\Renderer;
 use Symfony\Component\HttpFoundation\Response;
 
 final class IndexRenderer extends Renderer

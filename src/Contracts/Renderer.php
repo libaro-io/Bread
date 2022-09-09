@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Libaro\Bread\Contracts;
 
-use Libaro\Bread\Fields\Fields;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Libaro\Bread\Fields\Fields;
 use Libaro\Bread\Routes\Routes;
 
 abstract class Renderer implements Responsable
@@ -97,7 +97,7 @@ abstract class Renderer implements Responsable
             $class = $arguments[0];
             if (is_string($class)) {
                 $class = app()->make($arguments[0]);
-                if (!$class instanceof Invokables) {
+                if (! $class instanceof Invokables) {
                     throw new \Exception('Class must implement Invokables.');
                 }
                 $this->$name = $class($this);
