@@ -9,7 +9,7 @@ use Libaro\Bread\Contracts\Field;
 
 final class Tabs extends Field
 {
-    public string $type = 'tabs';
+    public $type = 'tabs';
     /**
      * @var Collection<Tab>
      */

@@ -9,7 +9,7 @@ use Libaro\Bread\Contracts\Field;
 
 final class MultiSelect extends Field
 {
-    public string $type = 'multiSelect';
+    public $type = 'multiSelect';
 
     /**
      * @param string $name

@@ -9,7 +9,7 @@ use Libaro\Bread\Contracts\Field;
 
 final class Select extends Field
 {
-    public string $type = 'select';
+    public $type = 'select';
     public bool $multiple = true;
 
     /**

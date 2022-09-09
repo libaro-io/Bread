@@ -8,7 +8,7 @@ use Libaro\Bread\Contracts\Field;
 
 final class Number extends Field
 {
-    public string $type = 'number';
+    public $type = 'number';
 
     /**
      * @param string $name

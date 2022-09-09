@@ -8,7 +8,7 @@ use Libaro\Bread\Contracts\Field;
 
 final class Boolean extends Field
 {
-    public string $type = 'boolean';
+    public $type = 'boolean';
     public array $attributes = [];
 
     public static function make(string $name, string $label, array $attributes = []): self
