@@ -11,7 +11,10 @@ final class Tab extends Field
 {
     public $type = 'tab';
 
-    public Collection $fields;
+    /**
+     * @var Collection<int, Field>
+     */
+    public $fields;
     protected string $title;
 
     public function __construct()
@@ -21,7 +24,7 @@ final class Tab extends Field
 
     /**
      * @param $title
-     * @param Collection ...$fields
+     * @param Field ...$fields
      * @return Tab
      */
     public static function make(string $title, ...$fields): Tab
@@ -51,8 +54,6 @@ final class Tab extends Field
         $array = parent::toArray();
         $array['title'] = $this->title;
 
-        // TODO
-        /** @phpstan-ignore-next-line */
         $array['fields'] = $this->fields->map(function (Field $field) {
             return $field->toArray();
         })->toArray();
