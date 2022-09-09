@@ -9,6 +9,9 @@ use Libaro\Bread\Contracts\Component;
 
 final class Components
 {
+    /**
+     * @var Collection<int, Component>
+     */
     private Collection $components;
 
     public function __construct()
@@ -39,12 +42,8 @@ final class Components
         return $this->components;
     }
 
-    // TODO : fix phpstan errors with this ?
-    // https://stackoverflow.com/questions/66282988/how-to-get-phpstan-to-infer-the-type-for-my-laravel-collection-pipeline
     public function toArray(): array
     {
-        // TODO
-        /** @phpstan-ignore-next-line */
         return $this->components->map(function (Component $component) {
             return $component->toArray();
         })->toArray();
