@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Libaro\Bread\Renderers;
 
 use Inertia\Inertia;
-use Illuminate\Database\Eloquent\Model;
 use Libaro\Bread\Contracts\Renderer;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method fields(string $class)
