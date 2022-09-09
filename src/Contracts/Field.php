@@ -6,8 +6,8 @@ namespace Libaro\Bread\Contracts;
 
 abstract class Field
 {
-    /** @var string $type */
-    public  $type = 'text';
+    /** @var string */
+    public $type = 'text';
     public string $label = '';
     public string $name = '';
     public bool $editable = true;
