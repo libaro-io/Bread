@@ -97,7 +97,7 @@ abstract class Renderer implements Responsable
             $class = $arguments[0];
             if (is_string($class)) {
                 $class = app()->make($arguments[0]);
-                if (! $class instanceof Invokables) {
+                if (!$class instanceof Invokables) {
                     throw new \Exception('Class must implement Invokables.');
                 }
                 $this->$name = $class($this);
@@ -172,9 +172,8 @@ abstract class Renderer implements Responsable
                 return $components;
             }
 
-            // TODO: check by Johan if this is ok (code change for phpstan level 9)
-            return $components;
-//            return $components->toArray();
+            /** @phpstan-ignore-next-line  */
+            return $components->toArray();
         })->toArray() : [];
     }
 }
