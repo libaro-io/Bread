@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Libaro\Bread\Renderers;
 
+use Inertia\Inertia;
 use Illuminate\Database\Eloquent\Model;
 use Libaro\Bread\Contracts\Renderer;
 
@@ -61,10 +62,7 @@ final class FormRenderer extends Renderer
 
     public function toResponse($request)
     {
-        // TODO: fix "Call to an undefined method Inertia\Response|Inertia\ResponseFactory::with()"
-        // temporarily just ignoring phpstan for this line:
-        /** @phpstan-ignore-next-line */
-        return inertia('Bread::Form')
+        return Inertia::render('Bread::Form')
             ->with([
                 'title' => $this->title,
                 'entity' => $this->entity,
