@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Libaro\Bread\Renderers;
 
 use Inertia\Inertia;
+use Illuminate\Http\JsonResponse;
 use Libaro\Bread\Contracts\Renderer;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Headers\Headers;
+use Symfony\Component\HttpFoundation\Response;
 
 final class IndexRenderer extends Renderer
 {
@@ -37,6 +39,7 @@ final class IndexRenderer extends Renderer
         return $this;
     }
 
+    public function toResponse($request): JsonResponse|Response
     {
         return Inertia::render('Bread::Index')
             ->with([
