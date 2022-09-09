@@ -10,7 +10,10 @@ use Libaro\Bread\Contracts\Header;
 
 final class Headers
 {
-    protected Collection $headers;
+    /**
+     * @var Collection<int, Header>
+     */
+    protected $headers;
 
     public function __construct()
     {
@@ -48,8 +51,6 @@ final class Headers
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->headers
-            // TODO
-            /** @phpstan-ignore-next-line */
             ->map(function (Header $header) {
                 return $header->toArray();
             })

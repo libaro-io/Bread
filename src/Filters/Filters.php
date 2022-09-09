@@ -7,7 +7,10 @@ use stdClass;
 
 class Filters
 {
-    private Collection $filters;
+    /**
+     * @var Collection<int, Filter>
+     */
+    private $filters;
     private int $sideBarStarsAt = 5;
 
     public function __construct()
@@ -46,8 +49,6 @@ class Filters
     {
         $class = new stdClass();
         $class->data = $this->filters
-            // TODO
-            /** @phpstan-ignore-next-line */
             ->map(function (Filter $filter) {
                 return $filter->toArray();
             })

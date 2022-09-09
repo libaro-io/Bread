@@ -11,7 +11,7 @@ final class Tabs extends Field
 {
     public $type = 'tabs';
     /**
-     * @var Collection<Tab>
+     * @var Collection<int, Tab>
      */
     public Collection $tabs;
 
@@ -49,8 +49,6 @@ final class Tabs extends Field
     {
         $array = parent::toArray();
         $array['tabs'] = $this->tabs
-            // TODO
-            /** @phpstan-ignore-next-line */
             ->map(function (Field $tab) {
                 return $tab->toArray();
             })
