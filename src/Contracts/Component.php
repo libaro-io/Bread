@@ -6,8 +6,14 @@ namespace Libaro\Bread\Contracts;
 
 abstract class Component
 {
+    /**
+     * @return string
+     */
     abstract public function getVue();
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         return [

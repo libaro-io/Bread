@@ -16,7 +16,7 @@ final class Link extends Header
         $this->setType('link');
     }
 
-    public static function make(string $label, string $value, bool $_blank = false)
+    public static function make(string $label, string $value, bool $_blank = false): Link
     {
         return new self($label, $value, $_blank);
     }

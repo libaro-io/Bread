@@ -10,7 +10,7 @@ use Libaro\Bread\Contracts\Field;
 final class Select extends Field
 {
     public $type = 'select';
-    public $multiple = true;
+    public bool $multiple = true;
 
     /**
      * @param string $name
@@ -23,19 +23,19 @@ final class Select extends Field
         $this->options = $options;
     }
 
-    public static function make(string $name, string $label, Collection $options)
+    public static function make(string $name, string $label, Collection $options): Select
     {
         return new self($name, $label, $options);
     }
 
-    public function multiple()
+    public function multiple(): Select
     {
         $this->multiple = true;
 
         return $this;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         $array = parent::toArray();
         $array['multiple'] = $this->multiple;

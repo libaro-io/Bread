@@ -17,7 +17,7 @@ final class InertiaLink extends Header
         $this->setType('inertia_link');
     }
 
-    public static function make(string $label, string $value, string|null $name, string|null $propName = null)
+    public static function make(string $label, string $value, string|null $name, string|null $propName = null): InertiaLink
     {
         return new self($label, $value, $name, $propName);
     }

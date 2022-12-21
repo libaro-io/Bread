@@ -6,9 +6,13 @@ namespace Libaro\Bread\Fields;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
+use Libaro\Bread\Contracts\Field;
 
 class Fields
 {
+    /**
+     * @var Collection<int, Field>
+     */
     private Collection $fields;
 
     public function __construct()
@@ -16,7 +20,11 @@ class Fields
         $this->fields = new Collection();
     }
 
-    public static function add(...$fields)
+    /**
+     * @param Field ...$fields
+     * @return Fields
+     */
+    public static function add(...$fields): Fields
     {
         $class = new self();
 
@@ -27,7 +35,11 @@ class Fields
         return $class;
     }
 
-    public function push($field)
+    /**
+     * @param Field $field
+     * @return $this
+     */
+    public function push(Field $field): Fields
     {
         $this->fields->push($field);
 
@@ -39,11 +51,11 @@ class Fields
         return $this->fields;
     }
 
-    public function toArray()
+    public function toArray(): Fluent
     {
         $class = new Fluent();
         $class->offsetSet('data', $this->fields
-            ->map(function ($field) {
+            ->map(function (Field $field) {
                 return $field->toArray();
             })
             ->toArray());
@@ -53,7 +65,7 @@ class Fields
         return $class;
     }
 
-    public function getOptions()
+    public function getOptions(): array
     {
         return [];
     }

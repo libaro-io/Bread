@@ -15,7 +15,7 @@ final class Download extends Header
         $this->setType('download');
     }
 
-    public static function make(string $label, string $value)
+    public static function make(string $label, string $value): Download
     {
         return new self($label, $value);
     }

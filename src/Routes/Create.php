@@ -8,7 +8,7 @@ use Libaro\Bread\Contracts\Route;
 
 final class Create extends Route
 {
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }

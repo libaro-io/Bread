@@ -8,22 +8,32 @@ use Libaro\Bread\ValueObjects\Types;
 
 class CreateCustomService
 {
-    public static function isNameValid(string $name): bool
+    /**
+     * @param string $name
+     * @return bool
+     */
+    public static function isNameValid($name): bool
     {
-        return preg_match(
+        $isValid = preg_match(
             '/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*$/',
             $name
         );
+
+        return (bool) $isValid;
     }
 
-    public static function transformName(string $name): string
+    /**
+     * @param string $name
+     * @return string
+     */
+    public static function transformName($name): string
     {
         return Str::ucfirst(Str::camel($name));
     }
 
     public static function copyFiles(string $name, int $type): array
     {
-        [$pathPhp, $pathVue] = Types::getPaths($type);
+        [$pathPhp, $pathVue] = Types::getPaths($type) ?? [] ;
         [$stubPhp, $stubVue] = Types::getStubs($type);
 
         self::copyStub($pathPhp, $stubPhp, $name, 'php');
@@ -32,14 +42,14 @@ class CreateCustomService
         return [$pathPhp, $pathVue];
     }
 
-    protected static function copyStub($path, $stub, $name, $extension)
+    protected static function copyStub(string $path, string $stub, string $name, string $extension): void
     {
         File::isDirectory($path) or File::makeDirectory($path, 0777, true, true);
 
         File::put("$path/$name.$extension", self::getContent($stub, $name));
     }
 
-    protected static function getContent($stub, $name): string
+    protected static function getContent(string $stub, string $name): string
     {
         $contents = File::get($stub);
 

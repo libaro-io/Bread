@@ -6,6 +6,7 @@ namespace Libaro\Bread\Contracts;
 
 abstract class Field
 {
+    /** @var string */
     public $type = 'text';
     public string $label = '';
     public string $name = '';
@@ -15,6 +16,9 @@ abstract class Field
             'mt-6',
         ],
     ];
+    /**
+     * @var mixed
+     */
     protected $options;
 
     public string $vueComponent;
@@ -34,7 +38,7 @@ abstract class Field
      * @param bool $overwrite
      * @return Field
      */
-    public function addWrapperClass($class, $overwrite = false)
+    public function addWrapperClass(string $class, $overwrite = false): Field
     {
         return $this->addClass('wrapper', $class, $overwrite);
     }
@@ -66,7 +70,7 @@ abstract class Field
         ];
     }
 
-    private function addClass(string $element, $class, $overwrite = false)
+    private function addClass(string $element, string $class, bool $overwrite = false): Field
     {
         if ($overwrite) {
             $this->classes[$element] = $class;

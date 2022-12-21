@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Libaro\Bread\Renderers;
 
 use Illuminate\Database\Eloquent\Model;
+use Inertia\Inertia;
 use Libaro\Bread\Contracts\Renderer;
 
 /**
@@ -14,9 +15,15 @@ use Libaro\Bread\Contracts\Renderer;
  */
 final class FormRenderer extends Renderer
 {
+    /**
+     * @var Model|mixed
+     */
     protected $entity;
-    private $method = 'POST';
+    private string $method = 'POST';
 
+    /**
+     * @param mixed $entity
+     */
     public function __construct($entity = null)
     {
         parent::__construct();
@@ -28,7 +35,7 @@ final class FormRenderer extends Renderer
         $this->entity = $entity;
     }
 
-    public function setMethod($method)
+    public function setMethod(string $method): FormRenderer
     {
         if (! in_array($method, ['POST', 'PUT', 'PATCH'])) {
             throw new \InvalidArgumentException('Invalid method');
@@ -39,11 +46,15 @@ final class FormRenderer extends Renderer
         return $this;
     }
 
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->method;
     }
 
+    /**
+     * @param mixed $entity
+     * @return FormRenderer
+     */
     public static function render($entity = null): FormRenderer
     {
         return new FormRenderer($entity);
@@ -51,14 +62,14 @@ final class FormRenderer extends Renderer
 
     public function toResponse($request)
     {
-        return inertia('Bread::Form')
+        return Inertia::render('Bread::Form')
             ->with([
                 'title' => $this->title,
                 'entity' => $this->entity,
-                'fields' => optional($this->fields)->toArray() ?? [],
+                'fields' => $this->fields ? $this->fields->toArray() : [],
                 'action' => $this->action,
                 'method' => $this->getMethod(),
-                'routes' => optional($this->routes)->toArray() ?? [],
+                'routes' => $this->routes ? $this->routes->toArray() : [],
                 'resource' => $this->guessResource(),
                 'classes' => $this->getClasses(),
                 'components' => $this->getComponents(),
@@ -66,7 +77,7 @@ final class FormRenderer extends Renderer
             ->toResponse($request);
     }
 
-    public function getClasses()
+    public function getClasses(): array
     {
         return $this->classes;
     }

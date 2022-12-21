@@ -11,15 +11,23 @@ final class Tab extends Field
 {
     public $type = 'tab';
 
+    /**
+     * @var Collection<int, Field>
+     */
     public $fields;
-    protected $title;
+    protected string $title;
 
     public function __construct()
     {
         $this->fields = new Collection();
     }
 
-    public static function make($title, ...$fields)
+    /**
+     * @param $title
+     * @param Field ...$fields
+     * @return Tab
+     */
+    public static function make(string $title, ...$fields): Tab
     {
         $class = new self();
         $class->setTitle($title);
@@ -31,7 +39,7 @@ final class Tab extends Field
         return $class;
     }
 
-    public function setTitle(string $title)
+    public function setTitle(string $title): Tab
     {
         $this->title = $title;
 
@@ -45,6 +53,7 @@ final class Tab extends Field
     {
         $array = parent::toArray();
         $array['title'] = $this->title;
+
         $array['fields'] = $this->fields->map(function (Field $field) {
             return $field->toArray();
         })->toArray();

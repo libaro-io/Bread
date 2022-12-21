@@ -11,7 +11,7 @@ class Boolean extends Filter
         $this->setType('boolean');
     }
 
-    public static function make(string $label, string $field)
+    public static function make(string $label, string $field): self
     {
         return new self($label, $field);
     }

@@ -16,7 +16,7 @@ final class Set extends Header
         $this->setType('set');
     }
 
-    public static function make(string $label, string $value, string $separator = ', ')
+    public static function make(string $label, string $value, string $separator = ', '): Set
     {
         return new self($label, $value, $separator);
     }

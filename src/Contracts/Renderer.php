@@ -7,17 +7,34 @@ namespace Libaro\Bread\Contracts;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Libaro\Bread\Fields\Fields;
 use Libaro\Bread\Routes\Routes;
 
 abstract class Renderer implements Responsable
 {
     protected string $title = '';
     protected string $action = '';
+
+    /**
+     * @var mixed
+     */
     protected $entity;
+
+    /**
+     * @var mixed
+     */
     protected $items;
+    /**
+     * @var mixed
+     */
     protected $resource;
-    protected $classes = [];
+    protected array $classes = [];
     protected ?Collection $components;
+
+
+    /**
+     * @var ?Fields
+     */
     protected $fields;
     protected ?Routes $routes = null;
 
@@ -42,7 +59,7 @@ abstract class Renderer implements Responsable
         return $this;
     }
 
-    public function with(array $array)
+    public function with(array $array): self
     {
         foreach ($array as $key => $value) {
             $this->{$key} = $value;
@@ -51,20 +68,26 @@ abstract class Renderer implements Responsable
         return $this;
     }
 
-    public function classes($classes)
+    /**
+     * @param mixed $classes
+     * @return $this
+     */
+    public function classes($classes): self
     {
         if (is_string($classes)) {
             $classes = explode(' ', $classes);
         }
 
-        foreach ($classes as $class) {
-            $this->classes[] = $class;
+        if (is_iterable($classes)) {
+            foreach ($classes as $class) {
+                $this->classes[] = $class;
+            }
         }
 
         return $this;
     }
 
-    public function __call($name, array $arguments)
+    public function __call(string $name, array $arguments): self
     {
         if (method_exists($this, $name)) {
             return $this->{$name}(...$arguments);
@@ -89,21 +112,28 @@ abstract class Renderer implements Responsable
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function getEntity()
     {
         return $this->entity;
     }
 
+    /**
+     * @return mixed|string
+     */
     protected function guessResource()
     {
         if ($this->resource) {
             return $this->resource;
         }
 
+        /** @phpstan-ignore-next-line */
         $first = $this->items->first();
 
         if ($first === null && $this->items instanceof LengthAwarePaginator) {
-            $path = explode('/', $this->items->path());
+            $path = ($this->items->path()) ? explode('/', $this->items->path()) : [];
             $this->resource = $path[count($path) - 1];
         }
 
@@ -115,13 +145,19 @@ abstract class Renderer implements Responsable
         return $this->resource;
     }
 
+    /**
+     * @param mixed ...$components
+     * @return $this
+     */
     public function components(...$components)
     {
         foreach ($components as $i => $component) {
             $class = new $component();
             $methods = get_class_methods($class);
             foreach ($methods as $methodKey => $method) {
-                $this->components->put($method, $class->{$method}());
+                if ($this->components) {
+                    $this->components->put($method, $class->{$method}());
+                }
             }
         }
 
@@ -130,12 +166,13 @@ abstract class Renderer implements Responsable
 
     public function getComponents(): array
     {
-        return $this->components->map(function ($components) {
+        return $this->components ? $this->components->map(function ($components) {
             if ($components === null) {
                 return $components;
             }
 
+            /** @phpstan-ignore-next-line */
             return $components->toArray();
-        })->toArray();
+        })->toArray() : [];
     }
 }

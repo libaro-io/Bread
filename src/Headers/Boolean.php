@@ -15,7 +15,7 @@ final class Boolean extends Header
         $this->setType('boolean');
     }
 
-    public static function make(string $label, string $value)
+    public static function make(string $label, string $value): Boolean
     {
         return new self($label, $value);
     }

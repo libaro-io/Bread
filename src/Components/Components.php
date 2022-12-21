@@ -9,6 +9,9 @@ use Libaro\Bread\Contracts\Component;
 
 final class Components
 {
+    /**
+     * @var Collection<int, Component>
+     */
     private Collection $components;
 
     public function __construct()
@@ -16,7 +19,7 @@ final class Components
         $this->components = new Collection();
     }
 
-    public static function add(...$components)
+    public static function add(Component ...$components): self
     {
         $class = new self();
 
@@ -27,7 +30,7 @@ final class Components
         return $class;
     }
 
-    public function push(Component $component)
+    public function push(Component $component): self
     {
         $this->components->push($component);
 
@@ -39,14 +42,14 @@ final class Components
         return $this->components;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return $this->components->map(function (Component $component) {
             return $component->toArray();
         })->toArray();
     }
 
-    public function getOptions()
+    public function getOptions(): array
     {
         return [];
     }

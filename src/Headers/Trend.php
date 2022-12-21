@@ -15,7 +15,7 @@ final class Trend extends Header
         $this->setType('trend');
     }
 
-    public static function make(string $label, string $value)
+    public static function make(string $label, string $value): Trend
     {
         return new self($label, $value);
     }

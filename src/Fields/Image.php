@@ -10,7 +10,7 @@ final class Image extends Field
 {
     public $type = 'image';
 
-    public $collection = 'images';
+    public string $collection = 'images';
 
     /**
      * @param string $name
@@ -21,12 +21,12 @@ final class Image extends Field
         parent::__construct($name, $label);
     }
 
-    public static function make(string $name, string $label)
+    public static function make(string $name, string $label): Image
     {
         return new self($name, $label);
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         $array = parent::toArray();
         $array['collection'] = $this->collection;

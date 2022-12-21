@@ -15,13 +15,22 @@ class Text extends Filter
         $this->setType('text');
     }
 
-    public static function make(string $label, string $field)
+    public static function make(string $label, string $field): Text
     {
         return new self($label, $field);
     }
 
-    public function apply(Builder $builder, $value)
+    /**
+     * @param Builder $builder
+     * @param string $value
+     * @return Builder
+     */
+    public function apply(Builder $builder, $value): Builder
     {
-        return $builder->where($this->getField(), $this->getOperator(), "%$value%");
+//        \PHPStan\dumpType($value);
+
+
+        return $builder
+            ->where($this->getField(), $this->getOperator(), "%$value%");
     }
 }

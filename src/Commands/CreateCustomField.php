@@ -15,6 +15,7 @@ class CreateCustomField extends Command
     public function handle(): int
     {
         $name = $this->argument('name');
+        $name = is_string($name) ? $name : '';
 
         if (! CreateCustomService::isNameValid($name)) {
             $this->error("Name: '$name' is not valid");

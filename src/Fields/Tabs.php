@@ -10,14 +10,21 @@ use Libaro\Bread\Contracts\Field;
 final class Tabs extends Field
 {
     public $type = 'tabs';
-    public $tabs;
+    /**
+     * @var Collection<int, Tab>
+     */
+    public Collection $tabs;
 
     public function __construct()
     {
         $this->tabs = new Collection();
     }
 
-    public static function add(...$tabs)
+    /**
+     * @param Tab ...$tabs
+     * @return Tabs
+     */
+    public static function add(...$tabs): Tabs
     {
         $class = new self();
 
@@ -28,7 +35,7 @@ final class Tabs extends Field
         return $class;
     }
 
-    public function push(Tab $tab)
+    public function push(Tab $tab): Tabs
     {
         $this->tabs->push($tab);
 
@@ -38,7 +45,7 @@ final class Tabs extends Field
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $array = parent::toArray();
         $array['tabs'] = $this->tabs

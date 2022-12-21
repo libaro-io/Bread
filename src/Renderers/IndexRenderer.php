@@ -4,16 +4,23 @@ declare(strict_types=1);
 
 namespace Libaro\Bread\Renderers;
 
+use Illuminate\Http\JsonResponse;
+use Inertia\Inertia;
 use Libaro\Bread\Contracts\Renderer;
 use Libaro\Bread\Filters\Filters;
 use Libaro\Bread\Headers\Headers;
+use Symfony\Component\HttpFoundation\Response;
 
 final class IndexRenderer extends Renderer
 {
     protected string $title = '';
     protected ?Headers $headers = null;
     protected ?Filters $filters = null;
-    protected $actions = [];
+    protected array $actions = [];
+
+    /**
+     * @var mixed
+     */
     protected $items = [];
 
     public static function render(): IndexRenderer
@@ -21,23 +28,27 @@ final class IndexRenderer extends Renderer
         return new static();
     }
 
-    public function items($items)
+    /**
+     * @param mixed $items
+     * @return $this
+     */
+    public function items($items): self
     {
         $this->items = $items;
 
         return $this;
     }
 
-    public function toResponse($request)
+    public function toResponse($request): JsonResponse|Response
     {
-        return inertia('Bread::Index')
+        return Inertia::render('Bread::Index')
             ->with([
-                'headers' => $this->headers->toArray(),
-                'filters' => optional($this->filters)->toArray() ?? [],
+                'headers' => $this->headers ? $this->headers->toArray() : [],
+                'filters' => $this->filters ? $this->filters->toArray() : [],
                 'actions' => $this->actions,
                 'items' => $this->items,
                 'title' => $this->title,
-                'routes' => optional($this->routes)->toArray() ?? [],
+                'routes' => $this->routes ? $this->routes->toArray() : [],
                 'resource' => $this->guessResource(),
                 'deleteMessage' => $this->deleteMessage,
                 'components' => $this->getComponents(),

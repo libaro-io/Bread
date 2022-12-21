@@ -16,7 +16,7 @@ final class Label extends Header
         $this->setType('label');
     }
 
-    public static function make(string $label, string $value, array $options)
+    public static function make(string $label, string $value, array $options): Label
     {
         return new self($label, $value, $options);
     }

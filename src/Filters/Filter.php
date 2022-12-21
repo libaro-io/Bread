@@ -25,7 +25,7 @@ abstract class Filter
         $this->filterMethods = new Collection();
     }
 
-    public function __call($name, $arguments)
+    public function __call(string $name, array $arguments): Filter
     {
         if (method_exists($this, $name)) {
             return $this->{$name}(...$arguments);
@@ -36,33 +36,38 @@ abstract class Filter
         return $this;
     }
 
-    public function setLabel(string $label)
+    public function setLabel(string $label): Filter
     {
         $this->label = $label;
 
         return $this;
     }
 
-    public function setField(string $field)
+    public function setField(string $field): Filter
     {
         $this->field = $field;
 
         return $this;
     }
 
-    public function setType(string $type)
+    public function setType(string $type): Filter
     {
         $this->type = $type;
 
         return $this;
     }
 
-    public function setOption(string $key, $value)
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function setOption(string $key, $value): void
     {
         $this->options[$key] = $value;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'label' => $this->label,
@@ -100,6 +105,11 @@ abstract class Filter
         return $this;
     }
 
+    /**
+     * @param Builder $builder
+     * @param mixed $value
+     * @return Builder
+     */
     public function apply(Builder $builder, $value)
     {
         return $builder->where($this->getField(), $this->getOperator(), $value);
@@ -113,6 +123,9 @@ abstract class Filter
         return $this->filterMethods;
     }
 
+    /**
+     * @return mixed
+     */
     private function getValue()
     {
         return app('request')->input("filters.{$this->getField()}");

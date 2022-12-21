@@ -7,6 +7,7 @@ namespace Libaro\Bread\Services;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Libaro\Bread\Contracts\Filter;
 use Libaro\Bread\Filters\Filters;
 
 final class FilterService
@@ -24,7 +25,7 @@ final class FilterService
     {
         $this->builder = $builder;
         $this->filters = $filters->get();
-        $requestFilters = $this->request->query('filters', []);
+        $requestFilters = (array) $this->request->query('filters', []);
         foreach ($requestFilters as $field => $value) {
             $this->applyFilter($field, $value);
         }
@@ -33,8 +34,8 @@ final class FilterService
     }
 
     /**
-     * @param $field
-     * @param $value
+     * @param mixed $field
+     * @param mixed $value
      * @return void
      */
     private function applyFilter($field, $value): void
@@ -43,6 +44,7 @@ final class FilterService
             return $filter->getField() === $field;
         });
 
+        /** @var Filter $filter */
         $filterMethods = $filter->getFilterMethods();
         if ($filterMethods->count() > 0) {
             foreach ($filterMethods as $method => $params) {

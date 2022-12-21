@@ -20,7 +20,7 @@ final class Number extends Field
         $this->options = ['float' => true];
     }
 
-    public static function make(string $name, string $label)
+    public static function make(string $name, string $label): Number
     {
         return new self($name, $label);
     }

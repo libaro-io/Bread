@@ -15,7 +15,7 @@ final class Number extends Header
         $this->setType('number');
     }
 
-    public static function make(string $label, string $value)
+    public static function make(string $label, string $value): Number
     {
         return new self($label, $value);
     }
