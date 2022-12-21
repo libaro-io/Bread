@@ -21,6 +21,9 @@ Bread is a Laravel package to be used in combination with Inertia, Tailwind and 
 composer require libaro/bread
 ```
 
+## Vite Support
+TODO: Add documentation for vite support
+
 ## Publish resource files
 
 Run following command to publish the javascript files needed to render the index and form pages.
